@@ -5,6 +5,7 @@ import { TextField } from '@/shared/lib/form/fields/text-field';
 import { PasswordField } from '@/shared/lib/form/fields/password-field';
 import { getFields } from './fields';
 import type { RegisterFormProps } from './types';
+import { PetsField } from '@/features/pet/fields/pets-field';
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
     const { fields } = useFields(getFields());
@@ -16,6 +17,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
                 <PasswordField field={fields.password} required />
                 <TextField field={fields.name} required />
                 <TextField field={fields.phone} required />
+
+                <PetsField field={fields.pets} />
 
                 <FormSubmit label="Зарегистрироваться" />
             </Stack>
