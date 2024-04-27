@@ -15,18 +15,27 @@ export interface User {
 
 export type UserApiModel = {
     _id: string;
-    roles: number[]; // 1 - client, 2 - sitter
-    profile: {
+    roles?: number[]; // 1 - client, 2 - sitter
+    pets?: {
+        name: string;
+        age: number;
+        comment: string;
+        _id: string;
+        type: number;
+        userId: string;
+        createdAt: string;
+    }[];
+    profile?: {
         name: string;
         photo: string;
-        address: {
+        address?: {
             country: string;
             city: string;
         };
-        communication: {
+        communication?: {
             phone: string;
         };
-        tariff: {
+        tariff?: {
             category: number;
             pricePerDay: number;
         }[];
