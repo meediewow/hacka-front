@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-export const selectSchema = () => {
+export const optionSchema = () => {
     return z.object(
         { id: z.number(), name: z.string() },
         { required_error: 'Поле должно быть заполнено' }
     );
 };
 
-export const selectNotRequiredSchema = () => {
-    return selectSchema().nullable().default(null);
+export const optionNotRequiredSchema = () => {
+    return optionSchema().nullable().default(null);
 };

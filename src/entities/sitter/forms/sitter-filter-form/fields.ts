@@ -1,11 +1,12 @@
-import { stringSchema } from '@/shared/schema/string';
+import { stringNotRequiredSchema } from '@/shared/schema/string';
+import { optionsSchema } from '@/shared/schema/options';
 import type { Fields } from '@/shared/lib/form';
 import type { SitterFilterFormData } from './types';
 
 export const getFields = (): Fields<SitterFilterFormData> => ({
     category: {
         label: 'Pet-категория',
-        // validate: () => stringSchema().default(''),
+        validate: () => optionsSchema().default([]),
     },
     date: {
         label: 'Дата',
@@ -13,6 +14,6 @@ export const getFields = (): Fields<SitterFilterFormData> => ({
     },
     address: {
         label: 'Адрес',
-        validate: () => stringSchema().default(''),
+        validate: () => stringNotRequiredSchema().default(''),
     },
 });

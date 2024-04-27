@@ -20,6 +20,7 @@ export const MultipleAutocompleteField = <T extends FieldValues>({
 }: MultipleAutocompleteFieldProps<T>) => {
     const {
         field: { value, onChange, ...field },
+        fieldState,
     } = useController<T>({
         name,
     });
@@ -33,7 +34,14 @@ export const MultipleAutocompleteField = <T extends FieldValues>({
             disableCloseOnSelect
             value={value ?? []}
             onChange={(_, newValue) => onChange(newValue)}
-            renderInput={(params) => <TextField {...params} label={label} />}
+            renderInput={(params) => (
+                <TextField
+                    {...params}
+                    label={label}
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                />
+            )}
             getOptionLabel={getOptionLabel}
             isOptionEqualToValue={isOptionEqualToValue}
         />

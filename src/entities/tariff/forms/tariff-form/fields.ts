@@ -1,7 +1,7 @@
+import { z } from 'zod';
+import { optionSchema } from '@/shared/schema/option';
 import type { Fields } from '@/shared/lib/form';
 import type { TariffFormData } from './types';
-import { selectSchema } from '@/shared/schema/option';
-import { z } from 'zod';
 
 export const getFields = (): Fields<TariffFormData> => ({
     pricePerDay: {
@@ -10,6 +10,6 @@ export const getFields = (): Fields<TariffFormData> => ({
     },
     category: {
         label: 'Категория',
-        validate: () => selectSchema(),
+        validate: () => optionSchema(),
     },
 });
