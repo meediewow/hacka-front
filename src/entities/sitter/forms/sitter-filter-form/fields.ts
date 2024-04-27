@@ -3,12 +3,16 @@ import type { Fields } from '@/shared/lib/form';
 import type { SitterFilterFormData } from './types';
 
 export const getFields = (): Fields<SitterFilterFormData> => ({
-    login: {
-        label: 'Логин',
+    category: {
+        label: 'Pet-категория',
         validate: () => stringSchema().default(''),
     },
-    password: {
-        label: 'Пароль',
+    date: {
+        label: 'Дата',
+        validate: () => stringSchema().default(''),
+    },
+    address: {
+        label: 'Адрес',
         validate: () => stringSchema().default(''),
     },
 });

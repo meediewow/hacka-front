@@ -1,6 +1,9 @@
+import type { DateRange } from '@/shared/types/date.ts';
+
 export interface SitterFilterFormData {
-    login: string;
-    password: string;
+    category: string;
+    date: DateRange;
+    address: string;
 }
 
 export interface SitterFilterFormProps {
