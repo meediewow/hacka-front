@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://hacka-back-9d4b8881c943.herokuapp.com/api',
+    baseURL: 'https://hacka-back-47977b5b89a1.herokuapp.com/api',
 });
 
 api.interceptors.request.use(
