@@ -1,9 +1,8 @@
 import { getUserToken, setUserToken } from '@/entities/user/utils/user-token';
 import { User } from '@/entities/user/types';
 import React from 'react';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useGetUserQuery } from '@/entities/user/api/get-user.query';
+import { Loader } from '@/shared/ui/loader/loader';
 
 export type AuthContextType = {
     token: string | null;
@@ -36,11 +35,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     }, []);
 
     if (isLoading) {
-        return (
-            <Stack height="100%" alignItems="center" justifyContent="center">
-                <CircularProgress />
-            </Stack>
-        );
+        return <Loader />;
     }
 
     return (

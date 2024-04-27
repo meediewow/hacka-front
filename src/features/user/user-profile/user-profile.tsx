@@ -8,23 +8,20 @@ import { Accessory } from '@/shared/ui/accessory';
 import { ContentCard } from '@/shared/ui/content-card';
 import type { UserProfileProps } from './types';
 
-export const UserProfile: React.FC<UserProfileProps> = () => {
+export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     return (
         <ContentCard>
             <Stack spacing={1}>
                 <Box display="flex" alignItems="center" justifyContent="center">
-                    <Avatar
-                        src="https://mui.com/static/images/avatar/1.jpg"
-                        alt=""
-                        sx={{ width: 128, height: 128 }}
-                    />
+                    <Avatar src={user.phone} alt="" sx={{ width: 128, height: 128 }} />
                 </Box>
+
                 <Box display="flex" flexDirection="column" alignItems="center">
-                    <Typography variant="h6">Наталья Александрова</Typography>
-                    <Typography color="text.secondary">
-                        Agiou Spiridonos 68, Limassol 3025
-                    </Typography>
+                    <Typography variant="h6">{user.name}</Typography>
+
+                    <Typography color="text.secondary">{user.address}</Typography>
                 </Box>
+
                 <Box
                     display="flex"
                     gap={0.75}
@@ -35,7 +32,9 @@ export const UserProfile: React.FC<UserProfileProps> = () => {
                         <Rating defaultValue={1} max={1} size="small" readOnly />
                         <Typography>4,9</Typography>
                     </Box>
+
                     <Accessory />
+
                     <Typography color="success.main">29 повторных заказов</Typography>
                 </Box>
             </Stack>
