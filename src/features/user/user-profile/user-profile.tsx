@@ -2,9 +2,9 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { Accessory } from '@/shared/ui/accessory';
+import { ViewRating } from '@/shared/ui/view-rating';
 import { ContentCard } from '@/shared/ui/content-card';
 import type { UserProfileProps } from './types';
 
@@ -28,10 +28,7 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <Box display="flex" gap={0.5} alignItems="center">
-                        <Rating defaultValue={1} max={1} size="small" readOnly />
-                        <Typography>4,9</Typography>
-                    </Box>
+                    <ViewRating rating={4.9} />
 
                     <Accessory />
 

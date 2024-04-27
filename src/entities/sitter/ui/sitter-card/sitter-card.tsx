@@ -2,11 +2,11 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { Accessory } from '@/shared/ui/accessory';
+import { ViewRating } from '@/shared/ui/view-rating';
 import type { SitterCardProps } from './types';
 
 export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
@@ -45,10 +45,7 @@ export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
                         )}
                     </Box>
                     <Box display="flex" gap={0.75} alignItems="center">
-                        <Box display="flex" gap={0.5} alignItems="center">
-                            <Rating defaultValue={1} max={1} size="small" readOnly />
-                            <Typography>{sitter.rating || '4,9'}</Typography>
-                        </Box>
+                        <ViewRating rating={sitter.rating} />
                         <Accessory />
                         <Typography color="success.main">
                             {sitter.countOrders} повторных заказов

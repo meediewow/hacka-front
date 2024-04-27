@@ -9,6 +9,7 @@ import { Loader } from '@/shared/ui/loader/loader';
 import { useParams } from 'react-router-dom';
 import { TariffBox } from '@/features/tariff/tariff-box/tariff-box';
 import { mapTariffToTariffFormData } from '@/entities/tariff/mappers/tariff-tariff-form';
+import { UserReviews } from '@/features/user/user-reviews';
 
 export const Sitter: React.FC = () => {
     const { sitterId } = useParams();
@@ -31,6 +32,7 @@ export const Sitter: React.FC = () => {
                 <TariffBox value={data.tariff?.map(mapTariffToTariffFormData) ?? []} />
 
                 <SitterAboutMe />
+                <UserReviews />
                 <SitterBooking />
             </Stack>
         </Box>
