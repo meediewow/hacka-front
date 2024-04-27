@@ -1,24 +1,21 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
-import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { Logo } from '@/shared/ui/logo';
+import { HeaderSC } from './styles';
 import type { HeaderProps } from './types';
 
 export const Header: React.FC<HeaderProps> = () => {
     return (
-        <AppBar position="relative">
-            <Toolbar>
-                <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-                    <MenuIcon />
-                </IconButton>
+        <HeaderSC>
+            <Box display="flex" alignItems="center" gap={0.5}>
+                <Logo />
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    News
+                    Petcyfy
                 </Typography>
-                <Button color="inherit">Login</Button>
-            </Toolbar>
-        </AppBar>
+            </Box>
+            <Button variant="outlined">Стать хостом</Button>
+        </HeaderSC>
     );
 };
