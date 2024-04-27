@@ -5,16 +5,14 @@ import { ContentCard } from '@/shared/ui/content-card';
 import { SitterCard } from '@/entities/sitter/ui/sitter-card';
 import type { SitterListProps } from './types';
 
-const sitters = Array.from({ length: 10 }).map((_, index) => ({
-    id: String(index),
-}));
+export const SitterList: React.FC<SitterListProps> = ({ items }) => {
+    console.log('items', items);
 
-export const SitterList: React.FC<SitterListProps> = () => {
     return (
         <ContentCard title="Список ситтеор">
             <Stack spacing={1} divider={<Divider />}>
-                {sitters.map((sitter, index) => (
-                    <SitterCard key={index} id={sitter.id} />
+                {items.map((sitter, index) => (
+                    <SitterCard key={index} id={sitter._id} />
                 ))}
             </Stack>
         </ContentCard>
