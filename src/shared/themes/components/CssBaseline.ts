@@ -16,5 +16,8 @@ export const MuiCssBaseline: Components<Theme>['MuiCssBaseline'] = {
             height: '100%',
             overflow: 'auto',
         },
+        '.MuiDateRangeCalendar-root > div[style]': {
+            display: 'none !important',
+        },
     }),
 };

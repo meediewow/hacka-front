@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { api } from '@/shared/api';
 import { SitterList } from '@/features/sitter/sitter-list';
+import { DateRangeCalendar } from '@mui/x-date-pickers-pro';
 
 export const Home: React.FC = () => {
     React.useEffect(() => {
@@ -10,6 +11,7 @@ export const Home: React.FC = () => {
 
     return (
         <Box height={2000}>
+            <DateRangeCalendar calendars={1} />
             <SitterList />
         </Box>
     );
