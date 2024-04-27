@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <HeaderSC>
             <Box display="flex" alignItems="center" gap={0.5}>
                 <Logo />
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="div">
                     Petcyfy
                 </Typography>
             </Box>
