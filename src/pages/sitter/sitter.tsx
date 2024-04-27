@@ -7,6 +7,8 @@ import { SitterBooking } from '@/features/sitter/sitter-booking';
 import { useGetUserByQuery } from '@/entities/user/api/get-user-by-id.query';
 import { Loader } from '@/shared/ui/loader/loader';
 import { useParams } from 'react-router-dom';
+import { TariffBox } from '@/features/tariff/tariff-box/tariff-box';
+import { mapTariffToTariffFormData } from '@/entities/tariff/mappers/tariff-tariff-form';
 
 export const Sitter: React.FC = () => {
     const { sitterId } = useParams();
@@ -25,6 +27,9 @@ export const Sitter: React.FC = () => {
         <Box p={0.5}>
             <Stack spacing={0.5}>
                 <UserProfile user={data} />
+
+                <TariffBox value={data.tariff?.map(mapTariffToTariffFormData) ?? []} />
+
                 <SitterAboutMe />
                 <SitterBooking />
             </Stack>
