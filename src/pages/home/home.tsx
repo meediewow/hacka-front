@@ -1,8 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import { api } from '@/shared/api';
 import { SitterList } from '@/features/sitter/sitter-list';
-import { DateRangeCalendar } from '@mui/x-date-pickers-pro';
+import { SitterFilter } from '@/features/sitter/sitter-filter';
 
 export const Home: React.FC = () => {
     React.useEffect(() => {
@@ -10,9 +11,11 @@ export const Home: React.FC = () => {
     }, []);
 
     return (
-        <Box height={2000}>
-            <DateRangeCalendar calendars={1} />
-            <SitterList />
+        <Box height={2000} p={0.5}>
+            <Stack spacing={0.5}>
+                <SitterFilter />
+                <SitterList />
+            </Stack>
         </Box>
     );
 };

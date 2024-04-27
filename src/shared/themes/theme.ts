@@ -5,4 +5,7 @@ import type {} from '@mui/lab/themeAugmentation';
 export const theme = createTheme({
     components,
     spacing: 16,
+    shape: {
+        borderRadius: 8,
+    },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { useStore } from '@/shared/lib/store/react';
-import { createStore } from '@/shared/lib/store/vanilla';
+import { useStore } from '@/shared/lib/store/react.ts';
+import { createStore } from '@/shared/lib/store/vanilla.ts';
 
 interface State {
     count: number;
