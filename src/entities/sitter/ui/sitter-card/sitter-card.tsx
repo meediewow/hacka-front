@@ -17,10 +17,7 @@ export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
             sx={{ color: 'unset', textDecoration: 'none' }}
         >
             <Box display="grid" gridTemplateColumns="auto 1fr" gap={0.5}>
-                <Avatar
-                    src={sitter.photo || 'https://mui.com/static/images/avatar/1.jpg'}
-                    alt={sitter.name}
-                />
+                <Avatar src={sitter.photo} alt={sitter.name} />
                 <Stack spacing={0.5}>
                     <Box display="grid" gridTemplateColumns="1fr auto" gap={0.5}>
                         <Stack spacing={0.25} overflow="auto">
@@ -36,14 +33,16 @@ export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
                                 {sitter.address || 'Agiou Spiridonos 68, Limassol 3025'}
                             </Typography>
                         </Stack>
-                        <Box>
-                            <Typography variant="button" whiteSpace="nowrap">
-                                25,00 EUR
-                            </Typography>
-                            <Typography textAlign="right" color="text.secondary">
-                                за сутки
-                            </Typography>
-                        </Box>
+                        {sitter.price && (
+                            <Box>
+                                <Typography variant="button" whiteSpace="nowrap">
+                                    {sitter.price} EUR
+                                </Typography>
+                                <Typography textAlign="right" color="text.secondary">
+                                    за сутки
+                                </Typography>
+                            </Box>
+                        )}
                     </Box>
                     <Box display="flex" gap={0.75} alignItems="center">
                         <Box display="flex" gap={0.5} alignItems="center">
