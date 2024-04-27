@@ -9,15 +9,15 @@ export default defineConfig({
         react(),
         VitePWA({
             manifest: {
-                short_name: 'Weather',
-                name: 'Weather: Do I need an umbrella?',
-                description: 'Weather forecast information',
+                short_name: 'Petcyfy',
+                name: 'Petcyfy',
+                description: 'Возьмем питомца в гости, пока вы в отпуске',
                 id: '/',
                 scope: '/',
                 display: 'standalone',
                 start_url: '/',
-                theme_color: '#3367D6',
-                background_color: '#3367D6',
+                theme_color: '#fff',
+                background_color: '#fff',
                 icons: [
                     {
                         src: '/maskable_icon_x512.png',
