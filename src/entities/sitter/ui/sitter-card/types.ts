@@ -1,3 +1,5 @@
+import type { Sitter } from '@/entities/sitter/types';
+
 export interface SitterCardProps {
-    id: string;
+    sitter: Sitter;
 }

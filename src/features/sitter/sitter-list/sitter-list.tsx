@@ -12,7 +12,7 @@ export const SitterList: React.FC<SitterListProps> = ({ items }) => {
         <ContentCard title="Список ситтеор">
             <Stack spacing={1} divider={<Divider />}>
                 {items.map((sitter, index) => (
-                    <SitterCard key={index} id={sitter._id} />
+                    <SitterCard key={index} sitter={sitter} />
                 ))}
             </Stack>
         </ContentCard>
