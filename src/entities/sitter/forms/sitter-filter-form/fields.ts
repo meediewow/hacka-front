@@ -10,7 +10,7 @@ export const getFields = (): Fields<SitterFilterFormData> => ({
     },
     date: {
         label: 'Дата',
-        // validate: () => stringSchema().default(''),
+        // validate: () => dateRangePickerNotRequiredSchema().default([]),
     },
     address: {
         label: 'Адрес',
