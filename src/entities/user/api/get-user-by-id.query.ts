@@ -7,13 +7,7 @@ export const useGetUserByQuery = (userId?: string) => {
     return useQuery({
         queryKey: ['user', userId],
         queryFn: async () => {
-            const data = (
-                await api.get('/user/get', {
-                    params: {
-                        userId,
-                    },
-                })
-            ).data;
+            const data = (await api.get(`/user/get/${userId}`)).data;
 
             return mapUserApiModelToUser(data) as User;
         },
