@@ -10,6 +10,7 @@ import { withProviders } from './providers';
 import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
 import { RegisterSitter } from '@/pages/register-sitter/register-sitter';
 import { RegisterClient } from '@/pages/register-client/register-client';
+import { ProfilePage } from '@/pages/profile/profile';
 
 const router = createBrowserRouter([
     {
@@ -59,11 +60,11 @@ const router = createBrowserRouter([
     },
 
     {
-        path: '/test',
+        path: '/profile',
         element: (
             <AuthGuard>
                 <DefaultLayout>
-                    <h1>TEST</h1>
+                    <ProfilePage />
                 </DefaultLayout>
             </AuthGuard>
         ),

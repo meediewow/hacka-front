@@ -26,8 +26,6 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
 
     const [token, setToken] = React.useState<string | null>(initialToken);
 
-    console.log('token', token);
-
     const { data, isLoading } = useGetUserQuery(!token);
 
     const user = data ?? null;
