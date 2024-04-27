@@ -13,7 +13,7 @@ export const getPetTypeMapLabel = (type: PetType | null | undefined) => {
     return type ? PetTypeMap[type] : '';
 };
 
-export const PetTypeMapOptions = () => {
+export const getPetTypeMapOptions = () => {
     return Object.entries(PetTypeMap).map(([id, name]) => ({
         name,
         id: Number(id),
