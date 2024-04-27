@@ -11,7 +11,7 @@ export const Home: React.FC = () => {
     }, []);
 
     return (
-        <Box height={2000} p={0.5}>
+        <Box p={0.5}>
             <Stack spacing={0.5}>
                 <SitterFilter />
                 <SitterList />

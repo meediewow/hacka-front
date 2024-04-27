@@ -1,8 +1,8 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import { ContentCard } from '@/shared/ui/content-card';
+import { SitterCard } from '@/entities/sitter/ui/sitter-card';
 import type { SitterListProps } from './types';
 
 const sitters = Array.from({ length: 10 }).map((_, index) => ({
@@ -12,11 +12,9 @@ const sitters = Array.from({ length: 10 }).map((_, index) => ({
 export const SitterList: React.FC<SitterListProps> = () => {
     return (
         <ContentCard title="Список ситтеор">
-            <Stack spacing={0.5} divider={<Divider />}>
+            <Stack spacing={1} divider={<Divider />}>
                 {sitters.map((sitter, index) => (
-                    <Box key={index} sx={{ p: 1 }}>
-                        {sitter.id}
-                    </Box>
+                    <SitterCard key={index} id={sitter.id} />
                 ))}
             </Stack>
         </ContentCard>
