@@ -4,8 +4,8 @@ const PetTypeMap = {
     [PetType.Dog]: 'Собака',
     [PetType.SmallDog]: 'Маленькая собачка',
     [PetType.Cat]: 'Кошка',
-    [PetType.SmallPet]: 'Маленький питомец (хомяк, кролик)',
-    [PetType.Exotic]: 'Экзотический питомец (ящерица, паук)',
+    [PetType.SmallPet]: 'Маленький питомец',
+    [PetType.Exotic]: 'Экзотический питомец',
     [PetType.Bird]: 'Попугаи и пр птицы',
 };
 
