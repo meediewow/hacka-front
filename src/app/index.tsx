@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthLayout } from '@/widgets/layouts/auth-layout';
 import { DefaultLayout } from '@/widgets/layouts/default-layout';
 import { Home } from '@/pages/home';
+import { Sitter } from '@/pages/sitter';
 import { Error } from '@/pages/error';
 import { Login } from '@/pages/login';
 import { withProviders } from './providers';
@@ -16,6 +17,15 @@ const router = createBrowserRouter([
         element: (
             <DefaultLayout>
                 <Home />
+            </DefaultLayout>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/sitter/:sitterId',
+        element: (
+            <DefaultLayout>
+                <Sitter />
             </DefaultLayout>
         ),
         errorElement: <Error />,
