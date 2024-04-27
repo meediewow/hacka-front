@@ -7,7 +7,7 @@ export const MuiCssBaseline: Components<Theme>['MuiCssBaseline'] = {
         },
         body: {
             height: '100%',
-            backgroundColor: theme.palette.grey[100],
+            backgroundColor: theme.palette.grey[200],
             paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         },
         '#root': {
