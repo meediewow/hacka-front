@@ -6,21 +6,16 @@ import { PasswordField } from '@/shared/lib/form/fields/password-field';
 import { getFields } from './fields';
 import type { RegisterFormProps } from './types';
 
-export const RegisterForm: React.FC<RegisterFormProps> = ({
-    onSubmit,
-    isFirstRegister,
-}) => {
-    const { fields } = useFields(getFields(isFirstRegister));
+export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
+    const { fields } = useFields(getFields());
 
     return (
         <Form fields={fields} onSubmit={onSubmit}>
             <Stack spacing={1.5}>
-                {isFirstRegister && (
-                    <>
-                        <TextField field={fields.login} />
-                        <PasswordField field={fields.password} />
-                    </>
-                )}
+                <TextField field={fields.login} required />
+                <PasswordField field={fields.password} required />
+                <TextField field={fields.name} required />
+                <TextField field={fields.phone} required />
 
                 <FormSubmit label="Зарегистрироваться" />
             </Stack>
