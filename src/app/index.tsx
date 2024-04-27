@@ -7,6 +7,8 @@ import { Error } from '@/pages/error';
 import { Login } from '@/pages/login';
 import { withProviders } from './providers';
 import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
+import { RegisterSitter } from '@/pages/register-sitter/register-sitter';
+import { RegisterClient } from '@/pages/register-client/register-client';
 
 const router = createBrowserRouter([
     {
@@ -27,6 +29,25 @@ const router = createBrowserRouter([
         ),
         errorElement: <Error />,
     },
+    {
+        path: '/register-sitter',
+        element: (
+            <DefaultLayout>
+                <RegisterSitter />
+            </DefaultLayout>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/register-client',
+        element: (
+            <DefaultLayout>
+                <RegisterClient />
+            </DefaultLayout>
+        ),
+        errorElement: <Error />,
+    },
+
     {
         path: '/test',
         element: (

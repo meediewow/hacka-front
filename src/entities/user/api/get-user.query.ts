@@ -8,6 +8,7 @@ export const useGetUserQuery = (skip?: boolean) => {
         queryFn: async () => {
             return (await api.get('/user/me')).data as User; // to fix type, add mapping
         },
+        retry: 0,
         enabled: !skip,
     });
 };
