@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import { enqueueSnackbar } from 'notistack';
-import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { sleep } from '@/shared/utils/sleep';
 import { LoginForm, LoginFormData } from '@/entities/auth/forms/login-form';
+import { useLoginMutation } from '@/entities/user/api/user-login.mutation';
+import { AuthContext } from '@/features/auth';
 
 export const Login: React.FC = () => {
     const navigate = useNavigate();
 
-    const mutation = useMutation({
-        mutationFn: async (data: LoginFormData) => {
-            await sleep(1500);
-            return Promise.reject({ message: 'login error', data });
-        },
-    });
+    const mutation = useLoginMutation();
+
+    const { setToken } = useContext(AuthContext);
 
     const onSubmit = async (data: LoginFormData) => {
         try {
-            await mutation.mutateAsync({ login: data.login, password: data.password });
-            navigate('/');
+            const result = await mutation.mutateAsync({
+                identifier: data.login,
+                password: data.password,
+            });
+
+            if (result.token) {
+                setToken(result.token);
+
+                navigate('/');
+            }
         } catch (error) {
             enqueueSnackbar((error as { message: string }).message, { variant: 'error' });
         }

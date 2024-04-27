@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
 import Stack from '@mui/material/Stack';
 import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
+import Typography from '@mui/material/Typography';
 
 export const RegisterClient: React.FC = () => {
     const navigate = useNavigate();
@@ -21,6 +22,10 @@ export const RegisterClient: React.FC = () => {
 
     return (
         <Stack width="100%" p={2} justifyContent="center">
+            <Typography variant="h5" mb={1.5}>
+                Стать ситтером
+            </Typography>
+
             <RegisterForm authLevel="client" onSubmit={onSubmit} />
         </Stack>
     );
