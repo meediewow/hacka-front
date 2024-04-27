@@ -9,4 +9,6 @@ export interface User {
     photo?: string;
     pets?: Pet[];
     tariff?: Tariff[];
+
+    isSitter?: boolean;
 }

@@ -5,6 +5,7 @@ import { withDrawer } from './with-drawer';
 import { withSnackbar } from './with-snackbar';
 import { withMuiTheme } from './with-mui-theme';
 import { withDatePickers } from './with-date-pickers';
+import { withAuth } from './with-auth';
 
 export const withProviders = compose(
     withQuery,
@@ -12,5 +13,6 @@ export const withProviders = compose(
     withDrawer,
     withModal,
     withSnackbar,
-    withDatePickers
+    withDatePickers,
+    withAuth
 );
