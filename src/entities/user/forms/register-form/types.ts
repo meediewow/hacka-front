@@ -1,5 +1,6 @@
 import { PetFormData } from '@/entities/pet/forms/pet-form';
 import { AuthLevel } from '../../types';
+import { TariffFormData } from '@/entities/tariff/forms/tariff-form';
 
 export interface RegisterFormData {
     login?: string;
@@ -8,6 +9,7 @@ export interface RegisterFormData {
     phone?: string;
 
     pets?: PetFormData[];
+    tariffs?: TariffFormData[];
 }
 
 export interface RegisterFormProps {

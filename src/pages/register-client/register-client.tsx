@@ -1,27 +1,21 @@
 import React from 'react';
 import { enqueueSnackbar } from 'notistack';
-import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { sleep } from '@/shared/utils/sleep';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
 import { useUser } from '@/features/auth';
 import Stack from '@mui/material/Stack';
+import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
 
 export const RegisterClient: React.FC = () => {
     const user = useUser();
 
     const navigate = useNavigate();
 
-    const mutation = useMutation({
-        mutationFn: async (data: RegisterFormData) => {
-            await sleep(1500);
-            return Promise.reject({ message: 'login error', data });
-        },
-    });
+    const mutation = useRegisterMutation();
 
     const onSubmit = async (data: RegisterFormData) => {
         try {
-            await mutation.mutateAsync({ login: data.login, password: data.password });
+            await mutation.mutateAsync({ data, role: 'client' });
             navigate('/');
         } catch (error) {
             enqueueSnackbar((error as { message: string }).message, { variant: 'error' });
