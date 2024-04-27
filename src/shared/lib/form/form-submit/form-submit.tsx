@@ -7,6 +7,8 @@ export const FormSubmit = <T extends FieldValues>({
     sx,
     label,
     execute,
+    endIcon,
+    startIcon,
     renderButton,
 }: FormSubmitProps<T>) => {
     const { isSubmitting, isValid } = useFormState();
@@ -23,6 +25,8 @@ export const FormSubmit = <T extends FieldValues>({
             variant="contained"
             onClick={execute}
             loading={isSubmitting}
+            startIcon={startIcon}
+            endIcon={endIcon}
             sx={sx}
         >
             {label}

@@ -9,4 +9,6 @@ export interface FormSubmitProps<T extends FieldValues> {
     renderButton?: (
         state: Pick<FormState<T>, 'isSubmitting' | 'isValid'>
     ) => React.JSX.Element;
+    startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
 }
