@@ -19,6 +19,7 @@ export const FormSubmit = <T extends FieldValues>({
         <LoadingButton
             fullWidth
             type="submit"
+            size="large"
             variant="contained"
             onClick={execute}
             loading={isSubmitting}

@@ -1,7 +1,16 @@
 import React from 'react';
 import { ContentCard } from '@/shared/ui/content-card';
+import { SitterFilterForm } from '@/entities/sitter/forms/sitter-filter-form';
 import type { SitterFilterProps } from './types';
 
 export const SitterFilter: React.FC<SitterFilterProps> = () => {
-    return <ContentCard title="Поиск ситтера">SitterFilter</ContentCard>;
+    const onSubmit = () => {
+        // your code
+    };
+
+    return (
+        <ContentCard title="Поиск ситтера">
+            <SitterFilterForm onSubmit={onSubmit} />
+        </ContentCard>
+    );
 };
