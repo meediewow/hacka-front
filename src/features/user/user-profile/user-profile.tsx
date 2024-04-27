@@ -6,9 +6,9 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { Accessory } from '@/shared/ui/accessory';
 import { ContentCard } from '@/shared/ui/content-card';
-import type { SitterProfileProps } from './types';
+import type { UserProfileProps } from './types';
 
-export const SitterProfile: React.FC<SitterProfileProps> = () => {
+export const UserProfile: React.FC<UserProfileProps> = () => {
     return (
         <ContentCard>
             <Stack spacing={1}>
