@@ -12,3 +12,5 @@ export interface User {
 
     isSitter?: boolean;
 }
+
+export type AuthLevel = 'client' | 'sitter';

@@ -6,6 +6,7 @@ import { Home } from '@/pages/home';
 import { Error } from '@/pages/error';
 import { Login } from '@/pages/login';
 import { withProviders } from './providers';
+import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,17 @@ const router = createBrowserRouter([
             <AuthLayout>
                 <Login />
             </AuthLayout>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/test',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <h1>TEST</h1>
+                </DefaultLayout>
+            </AuthGuard>
         ),
         errorElement: <Error />,
     },
