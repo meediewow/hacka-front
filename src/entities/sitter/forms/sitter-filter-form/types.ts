@@ -1,4 +1,4 @@
-import type { DateRange } from '@/shared/types/date.ts';
+import type { DateRange } from '@/shared/types/date';
 
 export interface SitterFilterFormData {
     category: string;

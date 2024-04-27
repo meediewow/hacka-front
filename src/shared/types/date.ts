@@ -1,4 +1,3 @@
-export interface DateRange {
-    start: number;
-    end: number;
-}
+import type { DateTime } from 'luxon';
+
+export type DateRange = import('@mui/x-date-pickers-pro/models').DateRange<DateTime>;

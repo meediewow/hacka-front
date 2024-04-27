@@ -9,7 +9,7 @@ export const getFields = (): Fields<SitterFilterFormData> => ({
     },
     date: {
         label: 'Дата',
-        validate: () => stringSchema().default(''),
+        // validate: () => stringSchema().default(''),
     },
     address: {
         label: 'Адрес',
