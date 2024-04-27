@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
     }, []);
 
     const onSubmit = async () => {
-        console.log('onSubmit', onSubmit);
+        console.log('onSubmit');
 
         await mutation.mutateAsync();
     };
