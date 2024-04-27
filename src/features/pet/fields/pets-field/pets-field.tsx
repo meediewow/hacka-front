@@ -16,5 +16,12 @@ export const PetsField = <T extends FieldValues>({
 
     const pets = (value as PetFormData[]) ?? [];
 
-    return <PetsBox value={pets} onChange={onChange} />;
+    return (
+        <PetsBox
+            value={pets}
+            onAdd={(pet) => {
+                onChange([...pets, pet]);
+            }}
+        />
+    );
 };

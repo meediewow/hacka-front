@@ -11,15 +11,11 @@ export const getFields = (): Fields<PetFormData> => ({
     },
     category: {
         label: 'Категория',
-        validate: () =>
-            selectSchema().default({
-                id: 0,
-                name: '',
-            }),
+        validate: () => selectSchema(),
     },
     age: {
         label: 'Возраст',
-        validate: () => z.number().int().positive().default(0),
+        validate: () => z.coerce.number().int().default(0),
     },
     comment: {
         label: 'Комментарий',

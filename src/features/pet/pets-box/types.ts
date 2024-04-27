@@ -2,7 +2,7 @@ import { PetFormData } from '@/entities/pet/forms/pet-form';
 
 export type PetsBoxProps = {
     value: PetFormData[];
-    onChange: (pets: PetFormData[]) => void;
+    onAdd?: (pet: PetFormData) => void;
 
     isAddedDisabled?: boolean;
 };
