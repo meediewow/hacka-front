@@ -1,3 +1,3 @@
 export interface ContentCardProps {
-    title: string;
+    title?: string;
 }

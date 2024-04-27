@@ -10,9 +10,11 @@ export const ContentCard: React.FC<React.PropsWithChildren<ContentCardProps>> = 
 }) => {
     return (
         <Paper component={Box} elevation={0} p={1}>
-            <Typography variant="h5" pb={1}>
-                {title}
-            </Typography>
+            {title && (
+                <Typography variant="h5" pb={1}>
+                    {title}
+                </Typography>
+            )}
             {children}
         </Paper>
     );
