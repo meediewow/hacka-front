@@ -5,6 +5,7 @@ import { AuthLevel } from '@/entities/user/types';
 import { useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 type Props = {
     children: React.ReactNode;
@@ -21,28 +22,34 @@ export const AuthGuard: React.FC<Props> = ({ children, authLevel }) => {
             authLevel === 'sitter' ? '/register-sitter' : '/register-client';
 
         return (
-            <Stack height="100%" alignItems="center" justifyContent="center" gap={1}>
-                <Button
-                    onClick={() => navigate('/login')}
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                        width: '80%',
-                    }}
-                >
-                    Login
-                </Button>
+            <Stack gap={1} height="100%" justifyContent="center">
+                <Typography variant="body2" p={1} textAlign="center">
+                    Для продолжения работы, пожалуйста авторизуйтесь или зарегистрируйтесь
+                </Typography>
 
-                <Button
-                    onClick={() => navigate(registerHref)}
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                        width: '80%',
-                    }}
-                >
-                    Register
-                </Button>
+                <Stack gap={1} alignItems="center">
+                    <Button
+                        onClick={() => navigate('/login')}
+                        variant="contained"
+                        color="primary"
+                        sx={{
+                            width: '80%',
+                        }}
+                    >
+                        Авторизация
+                    </Button>
+
+                    <Button
+                        onClick={() => navigate(registerHref)}
+                        variant="contained"
+                        color="primary"
+                        sx={{
+                            width: '80%',
+                        }}
+                    >
+                        Регистрация
+                    </Button>
+                </Stack>
             </Stack>
         );
     }

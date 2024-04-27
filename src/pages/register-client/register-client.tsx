@@ -23,7 +23,7 @@ export const RegisterClient: React.FC = () => {
     return (
         <Stack width="100%" p={2} justifyContent="center">
             <Typography variant="h5" mb={1.5}>
-                Стать ситтером
+                Зарегистрироваться
             </Typography>
 
             <RegisterForm authLevel="client" onSubmit={onSubmit} />
