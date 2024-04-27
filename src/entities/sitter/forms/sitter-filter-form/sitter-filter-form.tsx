@@ -16,8 +16,6 @@ export const SitterFilterForm: React.FC<SitterFilterFormProps> = ({ onSubmit }) 
                 <TextField field={fields.date} />
                 <TextField field={fields.address} />
 
-                <SingleInputDateRangeField label="Departure - Return" />
-
                 <DateRangePicker
                     slots={{ field: SingleInputDateRangeField }}
                     name="allowedRange"
