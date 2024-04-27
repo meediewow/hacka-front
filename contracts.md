@@ -86,6 +86,7 @@ PetType {
 ## КАРТОЧКА СИТТЕРА
 
 Для клиента, без авторизации
+
 параметры:
 
 ```
@@ -138,6 +139,7 @@ PetType {
 ## Метод бронирования
 
 Метод расчета стоимости:
+
 параметры:
 
 ```
@@ -161,6 +163,7 @@ PetType {
     sitterId, //
     clientId, //
     petIds, // id петов клиента
+    comment?: string
 } // создает новый заказ
 ```
 
@@ -225,13 +228,14 @@ FormData<{image: file}>
 ```
 type Order = {
     id: string;
-    clientId: string;
-    sitterId: string;
+    client?: Client;
+    sitter?: Client;
     dateBegin: string;
     dateEnd: string;
     pets: [Pet], // petIds ?
     status: OrderStatus,
-    isPayed?: boolean, // оплачен ли
+    isPayed?: boolean; // оплачен ли
+    priсe?: number;
 }
 ```
 
@@ -250,14 +254,19 @@ enum OrderStatus {
 ### Логика смены статусов
 
 New -> Confirmed, Canceled
+
 Confirmed -> Progress (тут нужна генерация QR)
+
 Progress -> Compleated (тут нужна генерация QR)
 
 ### Методы для смены статуса:
 
 Reject (orderId),
+
 Confirm (orderId),
+
 Progress (orderId),
+
 Compleat (orderId),
 
 Либо просто SetStatus (orderId, status: OrderStatus)
@@ -283,6 +292,12 @@ Compleat (orderId),
 
 ## Метод оплаты заказа
 
-Параметры {
-orderId
-}, возвращает всегда true (меняет у заказа флаг isPayed на true)
+Параметры
+
+```
+{
+    orderId
+}
+```
+
+возвращает всегда true (меняет у заказа флаг isPayed на true)
