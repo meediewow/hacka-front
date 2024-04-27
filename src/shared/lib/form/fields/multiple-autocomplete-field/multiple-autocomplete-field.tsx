@@ -3,7 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useController } from 'react-hook-form';
 import type { Option } from '@/shared/types/option';
 import type { FieldValues } from '@/shared/lib/form/types';
-import type { AutocompleteFieldProps } from './types';
+import type { MultipleAutocompleteFieldProps } from './types';
 
 const getOptionLabel = <TOption extends Option = Option>(option: TOption) => option.name;
 
@@ -14,10 +14,10 @@ const isOptionEqualToValue = <TOption extends Option = Option>(
     return option.id === value.id;
 };
 
-export const AutocompleteField = <T extends FieldValues>({
+export const MultipleAutocompleteField = <T extends FieldValues>({
     field: { name, label },
     ...props
-}: AutocompleteFieldProps<T>) => {
+}: MultipleAutocompleteFieldProps<T>) => {
     const {
         field: { value, onChange, ...field },
     } = useController<T>({
@@ -28,8 +28,10 @@ export const AutocompleteField = <T extends FieldValues>({
         <Autocomplete
             {...props}
             {...field}
+            multiple
             fullWidth
-            value={value ?? null}
+            disableCloseOnSelect
+            value={value ?? []}
             onChange={(_, newValue) => onChange(newValue)}
             renderInput={(params) => <TextField {...params} label={label} />}
             getOptionLabel={getOptionLabel}
