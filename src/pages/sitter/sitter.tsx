@@ -31,8 +31,10 @@ export const Sitter: React.FC = () => {
 
                 <TariffBox value={data.tariff?.map(mapTariffToTariffFormData) ?? []} />
 
-                <SitterAboutMe />
+                <SitterAboutMe user={data} />
+
                 <UserReviews />
+
                 <SitterBooking />
             </Stack>
         </Box>
