@@ -1,6 +1,7 @@
 import React from 'react';
+import { ContentCard } from '@/shared/ui/content-card';
 import type { SitterFilterProps } from './types';
 
 export const SitterFilter: React.FC<SitterFilterProps> = () => {
-    return <div>SitterFilter</div>;
+    return <ContentCard title="Поиск ситтера">SitterFilter</ContentCard>;
 };
