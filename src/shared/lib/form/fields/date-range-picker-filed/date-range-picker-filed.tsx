@@ -9,6 +9,7 @@ export const DateRangePickerFiled = <T extends FieldValues>({
 }: DateRangePickerFiledProps<T>) => {
     const {
         field: { value, onChange, ...field },
+        fieldState,
     } = useController<T>({
         name,
     });
@@ -21,6 +22,12 @@ export const DateRangePickerFiled = <T extends FieldValues>({
             value={value ?? [null, null]}
             onChange={onChange}
             slots={{ field: SingleInputDateRangeField }}
+            slotProps={{
+                textField: {
+                    error: Boolean(fieldState.error),
+                    helperText: fieldState.error?.message,
+                },
+            }}
         />
     );
 };
