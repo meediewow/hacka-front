@@ -6,8 +6,9 @@ import { PasswordField } from '@/shared/lib/form/fields/password-field';
 import { getFields } from './fields';
 import type { RegisterFormProps } from './types';
 import { PetsField } from '@/features/pet/fields/pets-field';
+import { TariffsField } from '@/features/tariff/fields/tariff-field';
 
-export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
+export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, authLevel }) => {
     const { fields } = useFields(getFields());
 
     return (
@@ -18,7 +19,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
                 <TextField field={fields.name} required />
                 <TextField field={fields.phone} required />
 
-                <PetsField field={fields.pets} />
+                {authLevel === 'client' && <PetsField field={fields.pets} />}
+
+                {authLevel === 'sitter' && <TariffsField field={fields.tariffs} />}
 
                 <FormSubmit label="Зарегистрироваться" />
             </Stack>

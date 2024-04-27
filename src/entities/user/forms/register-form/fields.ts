@@ -31,4 +31,9 @@ export const getFields = () => (): Fields<RegisterFormData> => ({
         label: 'Питомцы',
         // validate: () => stringSchema().default(''),
     },
+
+    tariffs: {
+        label: 'Тарифы',
+        // validate: () => stringSchema().default(''),
+    },
 });

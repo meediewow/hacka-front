@@ -3,10 +3,10 @@ import { PetsBoxProps } from './types';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { getPetTypeMapLabel } from '@/entities/pet/utils/pet-type';
-import Paper from '@mui/material/Paper';
 import { usePetFormModal } from '@/entities/pet/modals/pet-form/use-pet-form-modal';
+import { ContentCard } from '@/shared/ui/content-card';
 
-export const PetsBox = ({ value, onAdd, isAddedDisabled }: PetsBoxProps) => {
+export const PetsBox = ({ value, onAdd }: PetsBoxProps) => {
     const openModal = usePetFormModal();
 
     const onAddPet = async () => {
@@ -18,10 +18,8 @@ export const PetsBox = ({ value, onAdd, isAddedDisabled }: PetsBoxProps) => {
     };
 
     return (
-        <Paper sx={{ p: 1 }}>
+        <ContentCard title="Питомцы">
             <Stack gap={0.5}>
-                <Typography variant="body2">Питомцы</Typography>
-
                 <Stack gap={0.5}>
                     {value.map((pet) => (
                         <Typography key={pet.name} variant="caption">
@@ -30,7 +28,7 @@ export const PetsBox = ({ value, onAdd, isAddedDisabled }: PetsBoxProps) => {
                     ))}
                 </Stack>
 
-                {!isAddedDisabled && onAdd && (
+                {onAdd && (
                     <Button
                         onClick={() => onAddPet()}
                         sx={{
@@ -43,6 +41,6 @@ export const PetsBox = ({ value, onAdd, isAddedDisabled }: PetsBoxProps) => {
                     </Button>
                 )}
             </Stack>
-        </Paper>
+        </ContentCard>
     );
 };

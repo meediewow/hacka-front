@@ -14,6 +14,5 @@ export interface RegisterFormData {
 
 export interface RegisterFormProps {
     onSubmit: (data: RegisterFormData) => void;
-    isFirstRegister: boolean;
     authLevel: AuthLevel;
 }

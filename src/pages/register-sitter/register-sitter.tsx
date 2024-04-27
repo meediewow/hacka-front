@@ -4,12 +4,10 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { sleep } from '@/shared/utils/sleep';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
-import { useUser } from '@/features/auth';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 export const RegisterSitter: React.FC = () => {
-    const user = useUser();
-
     const navigate = useNavigate();
 
     const mutation = useMutation({
@@ -22,6 +20,7 @@ export const RegisterSitter: React.FC = () => {
     const onSubmit = async (data: RegisterFormData) => {
         try {
             await mutation.mutateAsync({ login: data.login, password: data.password });
+
             navigate('/');
         } catch (error) {
             enqueueSnackbar((error as { message: string }).message, { variant: 'error' });
@@ -30,11 +29,9 @@ export const RegisterSitter: React.FC = () => {
 
     return (
         <Stack width="100%" p={2} justifyContent="center">
-            <RegisterForm
-                isFirstRegister={!user}
-                authLevel="sitter"
-                onSubmit={onSubmit}
-            />
+            <Typography variant="h5">Register as a sitter</Typography>
+
+            <RegisterForm authLevel="sitter" onSubmit={onSubmit} />
         </Stack>
     );
 };
