@@ -5,17 +5,11 @@ import { useMutation } from '@tanstack/react-query';
 import { SitterList } from '@/features/sitter/sitter-list';
 import { SitterFilter } from '@/features/sitter/sitter-filter';
 import { getSitters } from '@/entities/sitter/api/get-sitters';
-import { PetType } from '@/entities/pet/enum';
+import {
+    dataToVariables,
+    defaultCategories,
+} from '@/entities/sitter/utils/data-to-variables';
 import type { SitterFilterFormData } from '@/entities/sitter/forms/sitter-filter-form/types';
-
-const defaultCategories = [
-    PetType.Dog,
-    PetType.SmallDog,
-    PetType.Cat,
-    PetType.SmallPet,
-    PetType.Exotic,
-    PetType.Bird,
-];
 
 export const Home: React.FC = () => {
     const mutation = useMutation({
@@ -30,17 +24,7 @@ export const Home: React.FC = () => {
     }, []);
 
     const onSubmit = async (data: SitterFilterFormData) => {
-        const start = data.date?.[0]?.toISO();
-        const end = data.date?.[1]?.toISO();
-        const categories =
-            data.categories.length == 0
-                ? defaultCategories
-                : data.categories.map((category) => category.id);
-
-        await mutation.mutateAsync({
-            category: categories,
-            period: start && end ? { start, end } : undefined,
-        });
+        await mutation.mutateAsync(dataToVariables(data));
     };
 
     return (
