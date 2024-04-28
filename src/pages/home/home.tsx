@@ -10,6 +10,7 @@ import {
     defaultCategories,
 } from '@/entities/sitter/utils/data-to-variables';
 import type { SitterFilterFormData } from '@/entities/sitter/forms/sitter-filter-form/types';
+import { dataToViewModel } from '@/entities/sitter/utils/data-to-view-model';
 
 export const Home: React.FC = () => {
     const mutation = useMutation({
@@ -32,7 +33,7 @@ export const Home: React.FC = () => {
         <Box p={0.5}>
             <Stack spacing={0.5}>
                 <SitterFilter onSubmit={onSubmit} />
-                <SitterList items={mutation.data?.list ?? []} />
+                <SitterList items={mutation.data?.list?.map(dataToViewModel) ?? []} />
             </Stack>
         </Box>
     );
