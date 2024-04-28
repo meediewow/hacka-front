@@ -60,7 +60,7 @@ export const SitterOrder: React.FC = () => {
 
             if (url) {
                 getCode(
-                    `https://hacka-front-f42e31383e86.herokuapp.com/order/proceed/${orderId}`
+                    url
                 ).then((url) => {
                     setCodeUrl(url);
                 });
