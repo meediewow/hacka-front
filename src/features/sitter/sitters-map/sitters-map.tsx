@@ -41,7 +41,7 @@ export const SittersMapContent = ({ onSelectSitter, sitters, center }: SittersMa
         <GoogleMap
             center={center}
             markers={markers}
-            markerRadius={100}
+            markerRadius={500}
             height='calc(100vh - 116px)'
             onMarkerClick={onSelectSitter}
         />
