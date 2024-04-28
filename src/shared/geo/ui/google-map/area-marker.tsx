@@ -4,9 +4,9 @@ import { Circle, CircleProps } from '@react-google-maps/api';
 const MARKER_COLOR = '#078DEE';
 
 export interface AreaMarker<T> {
-    data?: T;
+    data: T;
     radius?: number;
-    onClick: (data?: T) => void;
+    onClick: (data: T) => void;
     map: google.maps.Map | null;
     center: CircleProps['center'];
 }

@@ -48,6 +48,7 @@ export type UserApiModel = {
             pricePerDay: number;
         }[];
     };
+    coordinates: [number, number];
 };
 
 export type AuthLevel = 'client' | 'sitter';

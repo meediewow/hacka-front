@@ -25,7 +25,7 @@ const MapPlaceholder = ({ height }: MapPlaceholderProps) => {
 }
 
 export interface MarkerData<T> {
-    data?: T;
+    data: T;
     id: string | number;
     center: google.maps.LatLngLiteral;
 }
@@ -35,7 +35,7 @@ export interface GoogleMapProps<T> {
     height: string | number;
     markers?: Array<MarkerData<T>>;
     center: google.maps.LatLngLiteral;
-    onMarkerClick?: (data?: T) => void;
+    onMarkerClick?: (data: T) => void;
 }
 
 export const GoogleMap = <T,>({ markerRadius, markers, height, center, onMarkerClick }: GoogleMapProps<T>) => {
@@ -56,7 +56,7 @@ export const GoogleMap = <T,>({ markerRadius, markers, height, center, onMarkerC
         setMap(null)
     }, []);
 
-    const markerClickHandler = React.useCallback((data?: T) => {
+    const markerClickHandler = React.useCallback((data: T) => {
         onMarkerClick?.(data);
     }, [onMarkerClick]);
 
