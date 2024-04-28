@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { DateTime } from 'luxon';
 import { useParams, useSearchParams } from 'react-router-dom';
+import { useUser } from '@/features/auth';
 import { Loader } from '@/shared/ui/loader';
 import { ContentCard } from '@/shared/ui/content-card';
 import { useGetUserByQuery } from '@/entities/user/api/get-user-by-id.query';
 import { UserBookingForm } from '@/entities/user/forms/user-booking-form';
 import type { UserBookingFormData } from '@/entities/user/forms/user-booking-form/types';
-import { useUser } from '@/features/auth';
 
 export const Booking: React.FC = () => {
     const [searchParams] = useSearchParams();

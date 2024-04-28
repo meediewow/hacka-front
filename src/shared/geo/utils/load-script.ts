@@ -1,4 +1,4 @@
-export const  loadScript = (src: string, position: HTMLElement | null, id: string) => {
+export const loadScript = (src: string, position: HTMLElement | null, id: string) => {
     if (!position) {
         return;
     }
@@ -8,4 +8,4 @@ export const  loadScript = (src: string, position: HTMLElement | null, id: strin
     script.setAttribute('id', id);
     script.src = src;
     position.appendChild(script);
-}
+};

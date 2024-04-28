@@ -1,2 +1,2 @@
-export { Accessory } from "./accessory";
-export type { AccessoryProps } from "./types";
+export { Accessory } from './accessory';
+export type { AccessoryProps } from './types';

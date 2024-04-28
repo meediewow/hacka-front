@@ -33,6 +33,6 @@ export interface GoogleGeoData {
         location: {
             lat: number;
             lng: number;
-        }
+        };
     };
 }
