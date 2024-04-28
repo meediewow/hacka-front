@@ -14,8 +14,8 @@ export const UserReviews: React.FC<UserReviewsProps> = () => {
     return (
         <ContentCard title="Отзывы" titleAdornment={<ViewRating rating={4.5} />}>
             <Stack spacing={1} divider={<Divider />}>
-                {reviews.map((review) => (
-                    <UserReviewCard review={review} />
+                {reviews.map((review, index) => (
+                    <UserReviewCard key={index} review={review} />
                 ))}
             </Stack>
         </ContentCard>

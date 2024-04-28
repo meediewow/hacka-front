@@ -22,8 +22,13 @@ export const TariffBox = ({ value, onAdd }: TariffBoxProps) => {
             titleAdornment={<Typography variant="caption">за сутки</Typography>}
         >
             <Stack gap={0.5}>
-                {value.map((tariff) => (
-                    <Stack gap={0.5} direction="row" justifyContent="space-between">
+                {value.map((tariff, index) => (
+                    <Stack
+                        key={index}
+                        gap={0.5}
+                        direction="row"
+                        justifyContent="space-between"
+                    >
                         <Typography variant="body1">{tariff.category.name}</Typography>
 
                         <Typography variant="subtitle2">

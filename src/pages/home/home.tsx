@@ -30,8 +30,16 @@ export const Home: React.FC = () => {
     }, []);
 
     const onSubmit = async (data: SitterFilterFormData) => {
+        const start = data.date?.[0]?.toISO();
+        const end = data.date?.[1]?.toISO();
+        const categories =
+            data.categories.length == 0
+                ? defaultCategories
+                : data.categories.map((category) => category.id);
+
         await mutation.mutateAsync({
-            category: data.categories.map((category) => category.id),
+            category: categories,
+            period: start && end ? { start, end } : undefined,
         });
     };
 
