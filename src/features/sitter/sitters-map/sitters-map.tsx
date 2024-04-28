@@ -15,7 +15,7 @@ export type SittersMapProps = Omit<SittersMapContentProps, 'center'>;
 
 type UserMarker = MarkerData<UserApiModel>;
 
-const defaultCenter = { lat: 40.7128, lng: -74.0060 };
+const defaultCenter = { lat: 34.66126353865611, lng: 33.02071074291831 };
 
 export const SittersMapContent = ({ onSelectSitter, sitters, center }: SittersMapContentProps) => {
     const markers = React.useMemo(() => {
@@ -26,8 +26,8 @@ export const SittersMapContent = ({ onSelectSitter, sitters, center }: SittersMa
 
             result.push({
                 center: {
-                    lng: user.coordinates[0],
-                    lat: user.coordinates[1],
+                    lng: user.coordinates[1],
+                    lat: user.coordinates[0],
                 },
                 data: user,
                 id: user._id
@@ -41,7 +41,7 @@ export const SittersMapContent = ({ onSelectSitter, sitters, center }: SittersMa
         <GoogleMap
             center={center}
             markers={markers}
-            markerRadius={10}
+            markerRadius={100}
             height='calc(100vh - 116px)'
             onMarkerClick={onSelectSitter}
         />
