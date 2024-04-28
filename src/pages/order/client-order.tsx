@@ -72,7 +72,7 @@ export const ClientOrder: React.FC = () => {
 
                 <ContentCard title="Стоимость заказа">
                     <Typography variant="h3" textAlign="center">
-                        {order.price ?? 0} EUR
+                        {Math.round(order.price ?? 0)} EUR
                     </Typography>
 
                     <Typography
