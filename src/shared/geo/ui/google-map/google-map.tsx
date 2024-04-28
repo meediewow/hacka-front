@@ -84,7 +84,7 @@ export const GoogleMap = <T,>({ markerRadius, markers, height, center, onMarkerC
 
     return isLoaded ? (
         <GoogleMapOrigin
-            zoom={12}
+            zoom={15}
             center={center}
             onLoad={onLoad}
             onUnmount={onUnmount}
