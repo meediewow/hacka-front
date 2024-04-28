@@ -33,10 +33,9 @@ export const useRegisterMutation = () => {
 
                     profile: {
                         name: data.name,
-                        // address: {
-                        //     country: data.country,
-                        //     city: data.city,
-                        // },
+                        address: {
+                            city: data.address?.name ?? '',
+                        },
                         communication: {
                             phone: data.phone,
                         },
@@ -45,6 +44,9 @@ export const useRegisterMutation = () => {
                             pricePerDay: tariff.pricePerDay,
                         })),
                     },
+                    coordinates: data.address
+                        ? [data.address.lng, data.address.lat]
+                        : undefined,
                 })
             ).data as RegisterMutationData;
         },

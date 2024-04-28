@@ -4,9 +4,10 @@ import { Form, FormSubmit, useFields } from '@/shared/lib/form';
 import { TextField } from '@/shared/lib/form/fields/text-field';
 import { PasswordField } from '@/shared/lib/form/fields/password-field';
 import { getFields } from './fields';
-import type { RegisterFormProps } from './types';
 import { PetsField } from '@/features/pet/fields/pets-field';
 import { TariffsField } from '@/features/tariff/fields/tariff-field';
+import { GeoAutocompleteField } from '@/shared/lib/form/fields/geo-autocomplete-field';
+import type { RegisterFormProps } from './types';
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, authLevel }) => {
     const { fields } = useFields(getFields());
@@ -30,7 +31,12 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, authLevel 
                     />
                 )}
 
-                {authLevel === 'sitter' && <TariffsField field={fields.tariffs} />}
+                {authLevel === 'sitter' && (
+                    <>
+                        <TariffsField field={fields.tariffs} />
+                        <GeoAutocompleteField field={fields.address} />
+                    </>
+                )}
 
                 <FormSubmit label="Зарегистрироваться" />
             </Stack>

@@ -1,7 +1,6 @@
 import { stringSchema } from '@/shared/schema/string';
 import type { Fields } from '@/shared/lib/form';
 import type { RegisterFormData } from './types';
-// import { z } from 'zod';
 
 /**
  *
@@ -39,5 +38,8 @@ export const getFields = () => (): Fields<RegisterFormData> => ({
     tariffs: {
         label: 'Тарифы',
         // validate: () => stringSchema().default(''),
+    },
+    address: {
+        label: 'Адрес',
     },
 });
