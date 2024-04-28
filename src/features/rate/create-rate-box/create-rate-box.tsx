@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAddRateMutation } from '@/entities/rate/api/add-rate.mutation';
 import { RateForm, RateFormData } from '@/entities/rate/forms/rate-form';
 import { useQueryClient } from '@tanstack/react-query';
@@ -21,8 +22,8 @@ export const CreateRateBox: React.FC<Props> = ({ userId }) => {
 
             enqueueSnackbar('Отзыв оставлен успешно', { variant: 'success' });
 
-            client.invalidateQueries({ queryKey: ['userReviews', userId] });
-            client.refetchQueries({ queryKey: ['userReviews', userId] });
+            void client.invalidateQueries({ queryKey: ['userReviews', userId] });
+            void client.refetchQueries({ queryKey: ['userReviews', userId] });
         } catch (error) {
             enqueueSnackbar((error as { message: string }).message, { variant: 'error' });
         }
