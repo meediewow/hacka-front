@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from '@mui/icons-material/Search';
+import MapIcon from '@mui/icons-material/Map';
 import PersonOutline from '@mui/icons-material/PersonOutline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -10,6 +11,11 @@ const link = [
         title: 'Поиск',
         path: '/',
         icon: <Search />,
+    },
+    {
+        title: 'На карте',
+        path: '/map',
+        icon: <MapIcon />,
     },
     {
         title: 'Профиль',

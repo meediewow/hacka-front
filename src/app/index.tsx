@@ -13,6 +13,7 @@ import { RegisterClient } from '@/pages/register-client/register-client';
 import { ProfilePage } from '@/pages/profile/profile';
 import { ClientOrder } from '@/pages/order/client-order';
 import { SitterOrder } from '@/pages/order/sitter-order';
+import { SittersOnMapPage } from '@/pages/sitters-on-map';
 
 const router = createBrowserRouter([
     {
@@ -104,6 +105,15 @@ const router = createBrowserRouter([
         ),
         errorElement: <Error />,
     },
+    {
+        path: '/map',
+        element: (
+            <DefaultLayout>
+                <SittersOnMapPage />
+            </DefaultLayout>
+        ),
+        errorElement: <Error />,
+    }
 ]);
 
 export const App: React.FC = withProviders(() => <RouterProvider router={router} />);
