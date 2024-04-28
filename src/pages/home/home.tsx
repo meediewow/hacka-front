@@ -21,6 +21,7 @@ export const Home: React.FC = () => {
         mutation.mutate({
             category: defaultCategories,
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onSubmit = async (data: SitterFilterFormData) => {

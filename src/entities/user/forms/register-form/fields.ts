@@ -19,7 +19,7 @@ export const getFields = () => (): Fields<RegisterFormData> => ({
     },
 
     name: {
-        label: 'Ваше имя',
+        label: 'Ваше имя и фамилия',
         validate: () => stringSchema().default(''),
     },
     phone: {

@@ -17,6 +17,7 @@ export const OrderList: React.FC<Props> = ({ role }) => {
             <Stack
                 direction="row"
                 spacing={2}
+                p={1}
                 alignItems="center"
                 justifyContent="center"
             >

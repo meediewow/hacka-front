@@ -47,7 +47,7 @@ export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
                     <ViewRating rating={sitter.rating} />
                     <Accessory />
                     <Typography color="success.main">
-                        {sitter.countOrders} повторных заказов
+                        {sitter.countOrders} заказов
                     </Typography>
                 </Box>
             </Stack>

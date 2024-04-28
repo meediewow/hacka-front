@@ -28,11 +28,19 @@ export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <ViewRating rating={4.9} />
+                    {Boolean(user.rating) && (
+                        <>
+                            <ViewRating rating={user.rating ?? 0} />
 
-                    <Accessory />
+                            <Accessory />
+                        </>
+                    )}
 
-                    <Typography color="success.main">29 повторных заказов</Typography>
+                    <Typography color="success.main">
+                        {user.countOrders
+                            ? `Заказов: ${user.countOrders ?? 0}`
+                            : 'Нет заказов'}
+                    </Typography>
                 </Box>
             </Stack>
         </ContentCard>

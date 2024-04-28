@@ -11,10 +11,15 @@ export interface User {
     tariff?: Tariff[];
 
     isSitter?: boolean;
+
+    rating?: number;
+    countOrders?: number;
 }
 
 export type UserApiModel = {
     _id: string;
+    rate?: number;
+    about?: string;
     roles?: number[]; // 1 - client, 2 - sitter
     pets?: {
         name: string;
@@ -32,6 +37,7 @@ export type UserApiModel = {
             country: string;
             city: string;
         };
+        ordersCount: number;
         communication?: {
             phone: string;
         };
