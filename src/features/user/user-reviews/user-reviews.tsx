@@ -15,8 +15,6 @@ export const UserReviews: React.FC<UserReviewsProps> = ({ targetId }) => {
         enabled: Boolean(targetId),
     });
 
-    console.log('data', data);
-
     return (
         <ContentCard title="Отзывы" titleAdornment={<ViewRating rating={4.5} />}>
             <Stack spacing={1} divider={<Divider />}>

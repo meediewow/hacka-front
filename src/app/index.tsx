@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         errorElement: <Error />,
     },
     {
-        path: '/booking',
+        path: '/booking/:sitterId',
         element: (
             <AuthGuard>
                 <DefaultLayout>

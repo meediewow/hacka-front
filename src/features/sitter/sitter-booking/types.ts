@@ -1,1 +1,3 @@
-export interface SitterBookingProps {}
+export interface SitterBookingProps {
+    sitterId?: string;
+}

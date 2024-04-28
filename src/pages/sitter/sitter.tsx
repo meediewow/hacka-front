@@ -35,7 +35,7 @@ export const Sitter: React.FC = () => {
 
                 <UserReviews targetId={sitterId} />
 
-                <SitterBooking />
+                <SitterBooking sitterId={sitterId} />
             </Stack>
         </Box>
     );
