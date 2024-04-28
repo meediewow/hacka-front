@@ -31,7 +31,7 @@ export const OrderList: React.FC<Props> = ({ role }) => {
     }
 
     return (
-        <ContentCard title={role === 'sitter' ? 'Мои заказы' : 'Мои заявки'}>
+        <ContentCard title={role === 'sitter' ? 'Заказы мне' : 'Мои заявки'}>
             {data.map((order) => (
                 <OrderItem order={order} role={role} key={order._id} />
             ))}

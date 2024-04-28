@@ -23,7 +23,7 @@ export const ProfilePage: React.FC = () => {
 
             {user.isSitter && <OrderList role="sitter" />}
 
-            <OrderList role="client" />
+            {Boolean(user.countOrders) && <OrderList role="client" />}
         </Stack>
     );
 };
