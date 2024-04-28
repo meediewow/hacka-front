@@ -35,4 +35,5 @@ export const SitterOrder: React.FC = () => {
                 <Typography variant="h6">Ваш заказ</Typography>
             </Stack>
         </Box>
+    );
 };
