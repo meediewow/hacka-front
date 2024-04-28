@@ -93,7 +93,7 @@ export const ClientOrder: React.FC = () => {
 
                 <TariffBox value={user.tariff?.map(mapTariffToTariffFormData) ?? []} />
 
-                <UserReviews rate={order?.sitter?.rate} targetId={order?.sitter?._id} />
+                <UserReviews rate={user.rating} targetId={order?.sitter?._id} />
 
                 {status === OrderStatus.Completed && (
                     <ContentCard title="Оставить отзыв">

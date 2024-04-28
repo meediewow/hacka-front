@@ -32,9 +32,11 @@ export const OrderList: React.FC<Props> = ({ role }) => {
 
     return (
         <ContentCard title={role === 'sitter' ? 'Заказы для меня' : 'Мои заказы'}>
-            {data.map((order) => (
-                <OrderItem order={order} role={role} key={order._id} />
-            ))}
+            <Stack gap={1}>
+                {data.map((order) => (
+                    <OrderItem order={order} role={role} key={order._id} />
+                ))}
+            </Stack>
         </ContentCard>
     );
 };
