@@ -37,7 +37,7 @@ export const Booking: React.FC = () => {
 
             enqueueSnackbar('Заказ успешно создан', { variant: 'success' });
 
-            navigate(`order/sitter/${orderId}`);
+            navigate(`/order/client/${orderId}`);
         } catch (error) {
             const message = (error as { message: string })?.message;
 
