@@ -5,6 +5,7 @@ import { Home } from '@/pages/home';
 import { Sitter } from '@/pages/sitter';
 import { Error } from '@/pages/error';
 import { Login } from '@/pages/login';
+import { Booking } from '@/pages/booking';
 import { withProviders } from './providers';
 import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
 import { RegisterSitter } from '@/pages/register-sitter/register-sitter';
@@ -57,13 +58,23 @@ const router = createBrowserRouter([
         ),
         errorElement: <Error />,
     },
-
     {
         path: '/profile',
         element: (
             <AuthGuard>
                 <DefaultLayout>
                     <ProfilePage />
+                </DefaultLayout>
+            </AuthGuard>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/booking',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <Booking />
                 </DefaultLayout>
             </AuthGuard>
         ),
