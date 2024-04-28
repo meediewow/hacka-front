@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import Box from '@mui/material/Box';
 import { enqueueSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
 import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
 import { AuthContext } from '@/features/auth';
-import Box from '@mui/material/Box';
+
 import { ContentCard } from '@/shared/ui/content-card';
 
 export const RegisterClient: React.FC = () => {
     const navigate = useNavigate();
 
-    const { setToken } = useContext(AuthContext);
+    const { setToken } = React.useContext(AuthContext);
 
     const mutation = useRegisterMutation();
 
@@ -28,7 +29,7 @@ export const RegisterClient: React.FC = () => {
     };
 
     return (
-        <Box sx={{ mt: 1.5 }}>
+        <Box p={1}>
             <ContentCard title="Зарегистрироваться">
                 <RegisterForm authLevel="client" onSubmit={onSubmit} />
             </ContentCard>

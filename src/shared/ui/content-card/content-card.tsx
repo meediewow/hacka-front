@@ -1,9 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import type { ContentCardProps } from './types';
-import Stack from '@mui/material/Stack';
 
 export const ContentCard: React.FC<React.PropsWithChildren<ContentCardProps>> = ({
     title,

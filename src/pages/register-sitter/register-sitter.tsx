@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import Box from '@mui/material/Box';
 import { enqueueSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
 import { useUserUpdateMutation } from '@/entities/user/api/user-update.mutation';
 import { AuthContext, useUser } from '@/features/auth';
 import { MakeSitterForm, MakeSitterFormData } from '@/entities/user/forms/make-sitter';
 import { useQueryClient } from '@tanstack/react-query';
+import { ContentCard } from '@/shared/ui/content-card';
 
 export const RegisterSitter: React.FC = () => {
     const user = useUser();
@@ -20,7 +20,7 @@ export const RegisterSitter: React.FC = () => {
     const mutation = useRegisterMutation();
     const updateMutation = useUserUpdateMutation();
 
-    const { setToken } = useContext(AuthContext);
+    const { setToken } = React.useContext(AuthContext);
 
     const onSubmit = async (data: RegisterFormData) => {
         try {
@@ -70,16 +70,14 @@ export const RegisterSitter: React.FC = () => {
     };
 
     return (
-        <Stack width="100%" p={2} justifyContent="center">
-            <Typography variant="h5" mb={1.5}>
-                Стать ситтером
-            </Typography>
-
-            {user ? (
-                <MakeSitterForm onSubmit={onMakeSitterSubmit} />
-            ) : (
-                <RegisterForm authLevel="sitter" onSubmit={onSubmit} />
-            )}
-        </Stack>
+        <Box p={1}>
+            <ContentCard title="Стать ситтером">
+                {user ? (
+                    <MakeSitterForm onSubmit={onMakeSitterSubmit} />
+                ) : (
+                    <RegisterForm authLevel="sitter" onSubmit={onSubmit} />
+                )}
+            </ContentCard>
+        </Box>
     );
 };

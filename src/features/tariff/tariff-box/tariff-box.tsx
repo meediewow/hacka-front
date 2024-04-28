@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { ContentCard } from '@/shared/ui/content-card';
 import { useTariffFormModal } from '@/entities/tariff/modals/tariff-form/use-tariff-form-modal';
 
-export const TariffBox = ({ value, onAdd }: TariffBoxProps) => {
+export const TariffBox = ({ value, onAdd, sx }: TariffBoxProps) => {
     const openModal = useTariffFormModal();
 
     const onAddTariff = async () => {
@@ -18,6 +18,7 @@ export const TariffBox = ({ value, onAdd }: TariffBoxProps) => {
 
     return (
         <ContentCard
+            sx={sx}
             title="Стоимость услуг"
             titleAdornment={<Typography variant="caption">за сутки</Typography>}
         >

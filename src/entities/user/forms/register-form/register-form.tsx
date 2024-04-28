@@ -33,7 +33,10 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, authLevel 
 
                 {authLevel === 'sitter' && (
                     <>
-                        <TariffsField field={fields.tariffs} />
+                        <TariffsField
+                            field={fields.tariffs}
+                            sx={{ backgroundColor: (theme) => theme.palette.grey[100] }}
+                        />
                         <GeoAutocompleteField field={fields.address} />
                     </>
                 )}
