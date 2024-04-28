@@ -8,15 +8,18 @@ import { UserReviewCard } from '@/entities/user/ui/user-review-card';
 import { getUserReviews } from '@/entities/user/api/get-user-reviews';
 import type { UserReviewsProps } from './types';
 
-export const UserReviews: React.FC<UserReviewsProps> = ({ targetId }) => {
+export const UserReviews: React.FC<UserReviewsProps> = ({ targetId, rate }) => {
     const { data } = useQuery({
-        queryKey: ['userReviews'],
+        queryKey: ['userReviews', targetId],
         queryFn: () => getUserReviews({ targetId }),
         enabled: Boolean(targetId),
     });
 
     return (
-        <ContentCard title="Отзывы" titleAdornment={<ViewRating rating={4.5} />}>
+        <ContentCard
+            title="Отзывы"
+            titleAdornment={Boolean(rate) && <ViewRating rating={4.5} />}
+        >
             <Stack spacing={1} divider={<Divider />}>
                 {(data?.list ?? []).map((review, index) => (
                     <UserReviewCard key={index} review={review} />
