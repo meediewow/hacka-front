@@ -1,24 +1,48 @@
 import React from 'react';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Search from '@mui/icons-material/Search';
+import PersonOutline from '@mui/icons-material/PersonOutline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const link = [
+    {
+        title: 'Поиск',
+        path: '/',
+        icon: <Search />,
+    },
+    {
+        title: 'Профиль',
+        path: '/profile',
+        icon: <PersonOutline />,
+    },
+];
 
 export const Footer: React.FC = () => {
+    const navigate = useNavigate();
     const [value, setValue] = React.useState(0);
+
+    const { pathname } = useLocation();
+
+    React.useEffect(() => {
+        const index = link.findIndex((item) => item.path === pathname);
+        setValue(index);
+    }, [pathname]);
 
     return (
         <BottomNavigation
             showLabels
             value={value}
             onChange={(_, newValue) => {
+                const item = link[newValue];
+                navigate(item.path);
+
                 setValue(newValue);
             }}
         >
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+            {link.map((item, index) => (
+                <BottomNavigationAction key={index} label={item.title} icon={item.icon} />
+            ))}
         </BottomNavigation>
     );
 };

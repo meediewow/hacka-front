@@ -36,16 +36,6 @@ export const Header: React.FC<HeaderProps> = () => {
                         Стать ситтером
                     </Button>
                 )}
-
-                {!user ? (
-                    <Button component={Link} to="/login" variant="outlined">
-                        Войти
-                    </Button>
-                ) : (
-                    <Button component={Link} to="/profile" variant="outlined">
-                        Профиль
-                    </Button>
-                )}
             </Stack>
         </HeaderSC>
     );

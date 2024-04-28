@@ -10,9 +10,11 @@ export const DefaultLayout: React.FC<React.PropsWithChildren<DefaultLayoutProps>
     return (
         <>
             <Header />
+
             <Box flex={1} overflow="auto">
                 {children}
             </Box>
+
             <Footer />
         </>
     );
