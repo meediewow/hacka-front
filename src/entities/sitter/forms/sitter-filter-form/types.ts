@@ -1,7 +1,8 @@
 import type { DateRange } from '@/shared/types/date';
+import type { OptionBase } from '@/shared/types/option-base';
 
 export interface SitterFilterFormData {
-    category: string;
+    categories: OptionBase<number>[];
     date: DateRange;
     address: string;
 }

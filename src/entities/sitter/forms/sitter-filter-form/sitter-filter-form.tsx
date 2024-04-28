@@ -17,7 +17,7 @@ export const SitterFilterForm: React.FC<SitterFilterFormProps> = ({ onSubmit }) 
         <Form fields={fields} onSubmit={onSubmit}>
             <Stack spacing={1}>
                 <MultipleAutocompleteField
-                    field={fields.category}
+                    field={fields.categories}
                     options={getPetTypeMapOptions()}
                 />
                 <DateRangePickerFiled field={fields.date} />

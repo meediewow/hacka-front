@@ -5,6 +5,17 @@ import { useMutation } from '@tanstack/react-query';
 import { SitterList } from '@/features/sitter/sitter-list';
 import { SitterFilter } from '@/features/sitter/sitter-filter';
 import { getSitters } from '@/entities/sitter/api/get-sitters';
+import { PetType } from '@/entities/pet/enum';
+import type { SitterFilterFormData } from '@/entities/sitter/forms/sitter-filter-form/types';
+
+const defaultCategories = [
+    PetType.Dog,
+    PetType.SmallDog,
+    PetType.Cat,
+    PetType.SmallPet,
+    PetType.Exotic,
+    PetType.Bird,
+];
 
 export const Home: React.FC = () => {
     const mutation = useMutation({
@@ -13,13 +24,15 @@ export const Home: React.FC = () => {
     });
 
     React.useEffect(() => {
-        mutation.mutate();
+        mutation.mutate({
+            category: defaultCategories,
+        });
     }, []);
 
-    const onSubmit = async () => {
-        console.log('onSubmit');
-
-        await mutation.mutateAsync();
+    const onSubmit = async (data: SitterFilterFormData) => {
+        await mutation.mutateAsync({
+            category: data.categories.map((category) => category.id),
+        });
     };
 
     return (

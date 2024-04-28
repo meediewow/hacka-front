@@ -6,8 +6,6 @@ import { SitterCard } from '@/entities/sitter/ui/sitter-card';
 import type { SitterListProps } from './types';
 
 export const SitterList: React.FC<SitterListProps> = ({ items }) => {
-    console.log('items', items);
-
     return (
         <ContentCard title="Список ситтеор">
             <Stack spacing={1} divider={<Divider />}>

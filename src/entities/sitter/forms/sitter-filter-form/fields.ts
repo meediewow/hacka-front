@@ -4,7 +4,7 @@ import type { Fields } from '@/shared/lib/form';
 import type { SitterFilterFormData } from './types';
 
 export const getFields = (): Fields<SitterFilterFormData> => ({
-    category: {
+    categories: {
         label: 'Pet-категория',
         validate: () => optionsSchema().default([]),
     },
