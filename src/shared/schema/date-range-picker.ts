@@ -11,5 +11,5 @@ export const dateRangePickerSchema = () => {
 };
 
 export const dateRangePickerNotRequiredSchema = () => {
-    return dateRangePickerSchema().nullable().default([]);
+    return dateRangePickerSchema().nullable();
 };

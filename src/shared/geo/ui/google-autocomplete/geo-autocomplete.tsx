@@ -1,3 +1,4 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
@@ -16,11 +17,14 @@ export type UseGeoAutocompletePropsProps = UseGeoAutocompleteProps &
     Pick<
         AutocompleteProps<AutocompleteGeoOption, never, never, never>,
         'sx' | 'fullWidth'
-    >;
+    > & { label?: React.ReactNode; error?: boolean; helperText?: React.ReactNode };
 
 export const GeoAutocomplete = ({
     value,
     onChange: onChangeOuter,
+    label,
+    error,
+    helperText,
     ...autocompleteProps
 }: UseGeoAutocompletePropsProps) => {
     const { options, loading, onChange, setInputValue } = useGeoAutocomplete({
@@ -52,7 +56,13 @@ export const GeoAutocomplete = ({
                 setInputValue(newInputValue);
             }}
             renderInput={(params) => (
-                <TextField {...params} label="Add a location" fullWidth />
+                <TextField
+                    {...params}
+                    label={label}
+                    fullWidth
+                    error={error}
+                    helperText={helperText}
+                />
             )}
             renderOption={(props, option) => {
                 const matches = option.main_text_matched_substrings || [];

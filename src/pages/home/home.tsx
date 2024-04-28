@@ -5,12 +5,12 @@ import { useMutation } from '@tanstack/react-query';
 import { SitterList } from '@/features/sitter/sitter-list';
 import { SitterFilter } from '@/features/sitter/sitter-filter';
 import { getSitters } from '@/entities/sitter/api/get-sitters';
+import { dataToViewModel } from '@/entities/sitter/utils/data-to-view-model';
 import {
     dataToVariables,
     defaultCategories,
 } from '@/entities/sitter/utils/data-to-variables';
 import type { SitterFilterFormData } from '@/entities/sitter/forms/sitter-filter-form/types';
-import { dataToViewModel } from '@/entities/sitter/utils/data-to-view-model';
 
 export const Home: React.FC = () => {
     const mutation = useMutation({

@@ -2,7 +2,7 @@ import React from 'react';
 import Stack from '@mui/material/Stack';
 import SearchIcon from '@mui/icons-material/Search';
 import { Form, FormSubmit, useFields } from '@/shared/lib/form';
-import { TextField } from '@/shared/lib/form/fields/text-field';
+import { GeoAutocompleteField } from '@/shared/lib/form/fields/geo-autocomplete-field';
 import { getPetTypeMapOptions } from '@/entities/pet/utils/pet-type';
 import { DateRangePickerFiled } from '@/shared/lib/form/fields/date-range-picker-filed';
 import { MultipleAutocompleteField } from '@/shared/lib/form/fields/multiple-autocomplete-field';
@@ -21,7 +21,7 @@ export const SitterFilterForm: React.FC<SitterFilterFormProps> = ({ onSubmit }) 
                     options={getPetTypeMapOptions()}
                 />
                 <DateRangePickerFiled field={fields.date} />
-                <TextField field={fields.address} />
+                <GeoAutocompleteField field={fields.address} />
                 <FormSubmit label="Найти" startIcon={<SearchIcon />} />
             </Stack>
         </Form>

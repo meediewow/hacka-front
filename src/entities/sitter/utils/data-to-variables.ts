@@ -22,5 +22,6 @@ export const dataToVariables = (data: SitterFilterFormData): SittersVariables =>
     return {
         category: categories,
         period: start && end ? { start, end } : undefined,
+        coordinates: data.address ? [data.address.lng, data.address.lat] : undefined,
     };
 };

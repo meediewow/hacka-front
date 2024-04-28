@@ -1,4 +1,3 @@
-import { stringNotRequiredSchema } from '@/shared/schema/string';
 import { numberOptionsSchema } from '@/shared/schema/options';
 import type { Fields } from '@/shared/lib/form';
 import type { SitterFilterFormData } from './types';
@@ -10,10 +9,8 @@ export const getFields = (): Fields<SitterFilterFormData> => ({
     },
     date: {
         label: 'Дата',
-        // validate: () => dateRangePickerNotRequiredSchema().default([]),
     },
     address: {
         label: 'Адрес',
-        validate: () => stringNotRequiredSchema().default(''),
     },
 });
