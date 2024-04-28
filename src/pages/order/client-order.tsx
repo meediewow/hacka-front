@@ -21,6 +21,7 @@ import {
     getOrderStatusMapLabel,
     getOrderStatusSeverity,
 } from '@/entities/orders/utils/order-status';
+import { DateTime } from 'luxon';
 
 export const ClientOrder: React.FC = () => {
     const { orderId } = useParams();
@@ -55,7 +56,15 @@ export const ClientOrder: React.FC = () => {
                             label={getOrderStatusMapLabel(status)}
                         />
                     }
-                />
+                >
+                    <Typography variant="body2" color="text.secondary">
+                        {DateTime.fromISO(order.startAt as string).toFormat('dd.MM.yyyy')}
+                        {' - '}
+                        {DateTime.fromISO(order.finishAt as string).toFormat(
+                            'dd.MM.yyyy'
+                        )}
+                    </Typography>
+                </ContentCard>
 
                 <UserProfile user={user} />
 
