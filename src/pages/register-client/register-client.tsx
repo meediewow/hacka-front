@@ -29,7 +29,7 @@ export const RegisterClient: React.FC = () => {
     };
 
     return (
-        <Box p={1}>
+        <Box p={1} my="auto">
             <ContentCard title="Зарегистрироваться">
                 <RegisterForm authLevel="client" onSubmit={onSubmit} />
             </ContentCard>

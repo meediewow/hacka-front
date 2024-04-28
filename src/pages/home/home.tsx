@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
     };
 
     return (
-        <Box p={0.5}>
+        <Box p={1}>
             <Stack spacing={0.5}>
                 <SitterFilter onSubmit={onSubmit} />
                 <SitterList items={mutation.data?.list?.map(dataToViewModel) ?? []} />

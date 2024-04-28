@@ -70,7 +70,7 @@ export const RegisterSitter: React.FC = () => {
     };
 
     return (
-        <Box p={1}>
+        <Box p={1} my="auto">
             <ContentCard title="Стать ситтером">
                 {user ? (
                     <MakeSitterForm onSubmit={onMakeSitterSubmit} />

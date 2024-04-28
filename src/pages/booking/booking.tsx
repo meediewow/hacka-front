@@ -51,7 +51,7 @@ export const Booking: React.FC = () => {
     }));
 
     return (
-        <Box p={0.5}>
+        <Box p={1}>
             <Stack spacing={0.5}>
                 <ContentCard title={`Забронировать место у ${data.name}`}>
                     <UserBookingForm

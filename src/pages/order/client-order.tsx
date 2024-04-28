@@ -44,7 +44,7 @@ export const ClientOrder: React.FC = () => {
     const status = order.status as OrderStatus;
 
     return (
-        <Box p={0.5}>
+        <Box p={1}>
             <Stack spacing={0.5}>
                 <ContentCard
                     title="Ваш заказ"

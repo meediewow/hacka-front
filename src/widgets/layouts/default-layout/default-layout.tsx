@@ -11,7 +11,7 @@ export const DefaultLayout: React.FC<React.PropsWithChildren<DefaultLayoutProps>
         <>
             <Header />
 
-            <Box flex={1} overflow="auto">
+            <Box display="flex" flexDirection="column" flex={1} overflow="auto">
                 {children}
             </Box>
 

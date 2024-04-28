@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
     };
 
     return (
-        <Box sx={{ mt: 1.5 }}>
+        <Box p={1} my="auto">
             <ContentCard title="Petcyfy - Вход">
                 <LoginForm onSubmit={onSubmit} />
 
