@@ -24,7 +24,7 @@ export const TariffFormModal: React.FC<ModalComponentProps> = ({ state }) => {
     return (
         <Form fields={fields} onSubmit={(pet) => state.close(pet)}>
             <PanelBase
-                title="Добавить моего питомца"
+                title="Добавить тариф"
                 onAgree={noop}
                 onDisagree={onDisagree}
                 onClose={onClose}

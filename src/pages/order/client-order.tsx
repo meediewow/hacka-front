@@ -22,9 +22,14 @@ import {
     getOrderStatusSeverity,
 } from '@/entities/orders/utils/order-status';
 import { DateTime } from 'luxon';
+import { useChangeClientStatusMutation } from '@/entities/orders/api/change-client-status.mutation';
+import { enqueueSnackbar } from 'notistack';
+import { useQueryClient } from '@tanstack/react-query';
+import { usePayMutation } from '@/entities/orders/api/pay.mutation';
 
 export const ClientOrder: React.FC = () => {
     const { orderId } = useParams();
+    const client = useQueryClient();
 
     const { data: order, isLoading } = useGetOrderQuery('client', orderId);
 
@@ -32,6 +37,42 @@ export const ClientOrder: React.FC = () => {
         () => (order?.sitter ? mapUserApiModelToUser(order?.sitter) : null),
         [order]
     );
+
+    const { mutateAsync, isPending } = useChangeClientStatusMutation();
+    const pay = usePayMutation();
+
+    const updateStatus = React.useCallback(
+        async (newStatus: OrderStatus) => {
+            try {
+                await mutateAsync({ orderId: orderId as string, status: newStatus });
+
+                enqueueSnackbar('Статус изменено успешно', { variant: 'success' });
+
+                client.invalidateQueries({ queryKey: ['client-order', orderId] });
+                client.refetchQueries({ queryKey: ['client-order', orderId] });
+            } catch (error) {
+                enqueueSnackbar((error as { message: string }).message, {
+                    variant: 'error',
+                });
+            }
+        },
+        [client, mutateAsync, orderId]
+    );
+
+    const makePay = React.useCallback(async () => {
+        try {
+            await pay.mutateAsync({ orderId: orderId as string });
+
+            enqueueSnackbar('Оплата прошла успешно', { variant: 'success' });
+
+            client.invalidateQueries({ queryKey: ['client-order', orderId] });
+            client.refetchQueries({ queryKey: ['client-order', orderId] });
+        } catch (error) {
+            enqueueSnackbar((error as { message: string }).message, {
+                variant: 'error',
+            });
+        }
+    }, [client, orderId, pay]);
 
     if (isLoading) {
         return <Loader />;
@@ -91,11 +132,23 @@ export const ClientOrder: React.FC = () => {
                         justifyContent="space-between"
                     >
                         {status === OrderStatus.Confirmed && !order.isPayed && (
-                            <Button variant="contained">Оплатить</Button>
+                            <Button
+                                variant="contained"
+                                disabled={pay.isPending}
+                                onClick={() => makePay()}
+                            >
+                                Оплатить
+                            </Button>
                         )}
 
                         {status === OrderStatus.New && (
-                            <Button variant="contained">Отменить</Button>
+                            <Button
+                                disabled={isPending}
+                                variant="contained"
+                                onClick={() => updateStatus(OrderStatus.Canceled)}
+                            >
+                                Отменить
+                            </Button>
                         )}
                     </Stack>
                 </ContentCard>
