@@ -28,12 +28,18 @@ export const Booking: React.FC = () => {
         console.log('data', data);
     };
 
+    const petsOptions = (data.pets ?? []).map((pet) => ({
+        id: pet._id,
+        name: pet.name ?? '',
+    }));
+
     return (
         <Box p={0.5}>
             <Stack spacing={0.5}>
                 <ContentCard title={`Забронировать место у ${data.name}`}>
                     <UserBookingForm
                         onSubmit={onSubmit}
+                        petsOptions={petsOptions}
                         defaultValues={{
                             date: [
                                 DateTime.fromISO(searchParams.get('start') ?? ''),

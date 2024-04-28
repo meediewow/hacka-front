@@ -6,6 +6,7 @@ export type AddPetMutationVariables = {
 };
 
 export type AddPetMutationData = {
+    _id: string;
     name: string;
     type: number;
     age: number;

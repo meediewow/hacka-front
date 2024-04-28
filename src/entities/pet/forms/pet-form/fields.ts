@@ -6,6 +6,9 @@ import type { PetFormData } from './types';
 import { z } from 'zod';
 
 export const getFields = (): Fields<PetFormData> => ({
+    _id: {
+        label: '',
+    },
     name: {
         label: 'Кличка питомца',
         validate: () => stringSchema().default(''),

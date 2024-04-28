@@ -9,6 +9,7 @@ export type PetAM = {
 };
 
 export type Pet = {
+    _id: string;
     name?: string;
     category: PetType;
     age?: number;

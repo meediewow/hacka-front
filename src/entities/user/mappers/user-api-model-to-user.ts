@@ -7,6 +7,7 @@ export const mapUserApiModelToUser = (user: UserApiModel): User => {
         address: user.profile?.address?.city,
         photo: user.profile?.photo,
         pets: user.pets?.map((p) => ({
+            _id: p._id,
             name: p.name,
             age: p.age,
             comment: p.comment,

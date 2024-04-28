@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const optionsSchema = () => {
+export const numberOptionsSchema = () => {
     return z
         .array(
             z.object(
@@ -11,6 +11,21 @@ export const optionsSchema = () => {
         .min(1, { message: 'Поле должно быть заполнено' });
 };
 
-export const optionsNotRequiredSchema = () => {
-    return optionsSchema().nullable().default(null);
+export const numberOptionsNotRequiredSchema = () => {
+    return numberOptionsSchema().nullable().default(null);
+};
+
+export const stringOptionsSchema = () => {
+    return z
+        .array(
+            z.object(
+                { id: z.string(), name: z.string() },
+                { required_error: 'Поле должно быть заполнено' }
+            )
+        )
+        .min(1, { message: 'Поле должно быть заполнено' });
+};
+
+export const stringOptionsNotRequiredSchema = () => {
+    return stringOptionsSchema().nullable().default(null);
 };
