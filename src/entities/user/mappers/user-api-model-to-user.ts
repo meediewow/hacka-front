@@ -22,5 +22,7 @@ export const mapUserApiModelToUser = (user: UserApiModel): User => {
 
         countOrders: user.profile?.ordersCount ?? 0,
         rating: user.rate ?? 0,
+
+        about: user.about,
     };
 };

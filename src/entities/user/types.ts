@@ -14,6 +14,8 @@ export interface User {
 
     rating?: number;
     countOrders?: number;
+
+    about?: string;
 }
 
 export type UserApiModel = {

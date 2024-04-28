@@ -9,6 +9,8 @@ import { mapUserApiModelToUser } from '@/entities/user/mappers/user-api-model-to
 import { UserProfile } from '@/features/user/user-profile';
 import Typography from '@mui/material/Typography';
 
+import Chip from '@mui/material/Chip';
+
 export const SitterOrder: React.FC = () => {
     const { orderId } = useParams();
 
@@ -30,6 +32,10 @@ export const SitterOrder: React.FC = () => {
     return (
         <Box p={0.5}>
             <Stack spacing={0.5}>
+                <Stack direction="row" alignItems="center" justifyContent="space-between">
+                    <Chip size="small" />
+                </Stack>
+
                 <UserProfile user={user} />
 
                 <Typography variant="h6">Заказ на передержку</Typography>
