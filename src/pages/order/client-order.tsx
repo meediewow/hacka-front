@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import { SitterAboutMe } from '@/features/sitter/sitter-about-me';
 import { OrderStatus } from '@/entities/orders/enum';
 import Button from '@mui/material/Button';
+import { TariffBox } from '@/features/tariff/tariff-box/tariff-box';
+import { mapTariffToTariffFormData } from '@/entities/tariff/mappers/tariff-tariff-form';
+import { UserReviews } from '@/features/user/user-reviews';
 
 export const ClientOrder: React.FC = () => {
     const { orderId } = useParams();
@@ -64,6 +67,12 @@ export const ClientOrder: React.FC = () => {
                         </Button>
                     )}
                 </Stack>
+
+                <TariffBox value={user.tariff?.map(mapTariffToTariffFormData) ?? []} />
+
+                <UserReviews targetId={order?.sitter?._id} />
+
+                {status === OrderStatus.Completed && <>Оставляем отзыв тут</>}
             </Stack>
         </Box>
     );
