@@ -6,23 +6,27 @@ import Typography from '@mui/material/Typography';
 import Autocomplete, { AutocompleteProps } from '@mui/material/Autocomplete';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-import { useGeoAutocomplete, UseGeoAutocompleteProps } from './hooks/use-geo-autocomplete.ts';
+import {
+    useGeoAutocomplete,
+    UseGeoAutocompleteProps,
+} from './hooks/use-geo-autocomplete';
 import { AutocompleteGeoOption } from '@/shared/geo';
 
-export type UseGeoAutocompletePropsProps = UseGeoAutocompleteProps
-    & Pick<AutocompleteProps<AutocompleteGeoOption, never, never, never>, 'sx' | 'fullWidth'>
+export type UseGeoAutocompletePropsProps = UseGeoAutocompleteProps &
+    Pick<
+        AutocompleteProps<AutocompleteGeoOption, never, never, never>,
+        'sx' | 'fullWidth'
+    >;
 
 export const GeoAutocomplete = ({
     value,
     onChange: onChangeOuter,
     ...autocompleteProps
 }: UseGeoAutocompletePropsProps) => {
-    const {
-        options,
-        loading,
-        onChange,
-        setInputValue
-    } = useGeoAutocomplete({ value, onChange: onChangeOuter });
+    const { options, loading, onChange, setInputValue } = useGeoAutocomplete({
+        value,
+        onChange: onChangeOuter,
+    });
 
     return (
         <Autocomplete
@@ -51,13 +55,15 @@ export const GeoAutocomplete = ({
                 <TextField {...params} label="Add a location" fullWidth />
             )}
             renderOption={(props, option) => {
-                const matches =
-                    option.main_text_matched_substrings || [];
+                const matches = option.main_text_matched_substrings || [];
 
                 const parts = parse(
                     option.main_text ?? '',
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    matches.map((match: any) => [match.offset, match.offset + match.length]),
+                    matches.map((match: any) => [
+                        match.offset,
+                        match.offset + match.length,
+                    ])
                 );
 
                 return (
@@ -66,12 +72,22 @@ export const GeoAutocomplete = ({
                             <Grid item sx={{ display: 'flex', width: 44 }}>
                                 <LocationOnIcon sx={{ color: 'text.secondary' }} />
                             </Grid>
-                            <Grid item sx={{ width: 'calc(100% - 44px)', wordWrap: 'break-word' }}>
+                            <Grid
+                                item
+                                sx={{
+                                    width: 'calc(100% - 44px)',
+                                    wordWrap: 'break-word',
+                                }}
+                            >
                                 {parts.map((part, index) => (
                                     <Box
                                         key={index}
                                         component="span"
-                                        sx={{ fontWeight: part.highlight ? 'bold' : 'regular' }}
+                                        sx={{
+                                            fontWeight: part.highlight
+                                                ? 'bold'
+                                                : 'regular',
+                                        }}
                                     >
                                         {part.text}
                                     </Box>
@@ -85,5 +101,5 @@ export const GeoAutocomplete = ({
                 );
             }}
         />
-    )
-}
+    );
+};

@@ -8,6 +8,7 @@ import { ContentCard } from '@/shared/ui/content-card';
 import { useGetUserByQuery } from '@/entities/user/api/get-user-by-id.query';
 import { UserBookingForm } from '@/entities/user/forms/user-booking-form';
 import type { UserBookingFormData } from '@/entities/user/forms/user-booking-form/types';
+import { useUser } from '@/features/auth';
 
 export const Booking: React.FC = () => {
     const [searchParams] = useSearchParams();
@@ -15,6 +16,8 @@ export const Booking: React.FC = () => {
     const { sitterId } = useParams();
 
     const { data, isLoading } = useGetUserByQuery(sitterId);
+
+    const user = useUser();
 
     if (isLoading) {
         return <Loader />;
@@ -28,7 +31,7 @@ export const Booking: React.FC = () => {
         console.log('data', data);
     };
 
-    const petsOptions = (data.pets ?? []).map((pet) => ({
+    const petsOptions = (user?.pets ?? []).map((pet) => ({
         id: pet._id,
         name: pet.name ?? '',
     }));

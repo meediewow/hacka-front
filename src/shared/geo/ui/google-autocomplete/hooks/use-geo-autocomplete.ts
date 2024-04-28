@@ -1,14 +1,17 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import axios from 'axios';
-import { UNSAFE_GEO_TOKEN } from '@/shared/geo/constants.ts';
+import { UNSAFE_GEO_TOKEN } from '@/shared/geo/constants';
 import {
     PlaceType,
     GoogleGeoData,
     AutocompleteGeoOption,
-} from '@/shared/geo/ui/google-autocomplete/types.ts';
+} from '@/shared/geo/ui/google-autocomplete/types';
 import { debounce } from '@mui/material/utils';
-import { expandOption, toAutocompleteOption } from '@/shared/geo/ui/google-autocomplete/utils.ts';
-import { useScriptLoader } from '@/shared/geo/ui/google-autocomplete/hooks/use-script-loader.ts';
+import {
+    expandOption,
+    toAutocompleteOption,
+} from '@/shared/geo/ui/google-autocomplete/utils';
+import { useScriptLoader } from '@/shared/geo/ui/google-autocomplete/hooks/use-script-loader';
 
 export const autocompleteService = { current: null };
 
@@ -20,23 +23,28 @@ export interface UseGeoAutocompleteProps {
 export const useDecodedGeoFetcher = ({ onChange }: UseGeoAutocompleteProps) => {
     const [loading, setLoading] = useState(false);
 
-    const fetchExtendedData = React.useCallback(async (option: AutocompleteGeoOption) => {
-        try {
-            setLoading(true);
+    const fetchExtendedData = React.useCallback(
+        async (option: AutocompleteGeoOption) => {
+            try {
+                setLoading(true);
 
-            const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?place_id=${option.place_id}&key=${UNSAFE_GEO_TOKEN}`);
-            const data: GoogleGeoData = response.data?.results?.[0];
+                const response = await axios.get(
+                    `https://maps.googleapis.com/maps/api/geocode/json?place_id=${option.place_id}&key=${UNSAFE_GEO_TOKEN}`
+                );
+                const data: GoogleGeoData = response.data?.results?.[0];
 
-            if (data) {
-                onChange(expandOption(option, data));
+                if (data) {
+                    onChange(expandOption(option, data));
+                }
+            } finally {
+                setLoading(false);
             }
-        } finally {
-            setLoading(false);
-        }
-    }, [onChange]);
+        },
+        [onChange]
+    );
 
     return { loading, fetchExtendedData };
-}
+};
 
 export const useDataLoader = () => {
     const [loading, setLoading] = useState(false);
@@ -46,7 +54,7 @@ export const useDataLoader = () => {
             debounce(
                 (
                     request: { input: string },
-                    callback: (results?: readonly PlaceType[]) => void,
+                    callback: (results?: readonly PlaceType[]) => void
                 ) => {
                     setLoading(true);
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,16 +63,16 @@ export const useDataLoader = () => {
                         (results?: readonly PlaceType[]) => {
                             setLoading(false);
                             callback(results);
-                        },
+                        }
                     );
                 },
-                400,
+                400
             ),
-        [],
+        []
     );
 
     return { fetchGoogleData, loading };
-}
+};
 
 export const useGeoAutocomplete = (props: UseGeoAutocompleteProps) => {
     const [options, setOptions] = React.useState<readonly AutocompleteGeoOption[]>([]);
@@ -79,10 +87,9 @@ export const useGeoAutocomplete = (props: UseGeoAutocompleteProps) => {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if (!autocompleteService.current && (window as any).google) {
-            autocompleteService.current = new (
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                window as any
-            ).google.maps.places.AutocompleteService();
+            autocompleteService.current =
+                new // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).google.maps.places.AutocompleteService();
         }
 
         if (!autocompleteService.current) {
@@ -116,18 +123,21 @@ export const useGeoAutocomplete = (props: UseGeoAutocompleteProps) => {
         };
     }, [props.value, inputValue, fetchGoogleData]);
 
-    const onChange = useCallback((newValue: AutocompleteGeoOption | null) => {
-        if (newValue) {
-            setOptions([newValue, ...options]);
-            void fetchExtendedData(newValue);
-        }
-    }, [fetchExtendedData, options])
+    const onChange = useCallback(
+        (newValue: AutocompleteGeoOption | null) => {
+            if (newValue) {
+                setOptions([newValue, ...options]);
+                void fetchExtendedData(newValue);
+            }
+        },
+        [fetchExtendedData, options]
+    );
 
     return {
         options,
         onChange,
         inputValue,
         setInputValue,
-        loading: googleLoading || encodedLoading
+        loading: googleLoading || encodedLoading,
     };
-}
+};

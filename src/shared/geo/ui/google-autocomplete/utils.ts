@@ -1,4 +1,4 @@
-import { AutocompleteGeoOption, GoogleGeoData, PlaceType } from './types.ts';
+import { AutocompleteGeoOption, GoogleGeoData, PlaceType } from './types';
 
 export const toAutocompleteOption = (raw: PlaceType): AutocompleteGeoOption => {
     return {
@@ -10,9 +10,10 @@ export const toAutocompleteOption = (raw: PlaceType): AutocompleteGeoOption => {
 
         main_text: raw.structured_formatting.main_text,
         secondary_text: raw.structured_formatting.secondary_text,
-        main_text_matched_substrings: raw.structured_formatting.main_text_matched_substrings || []
-    }
-}
+        main_text_matched_substrings:
+            raw.structured_formatting.main_text_matched_substrings || [],
+    };
+};
 
 export const expandOption = (option: AutocompleteGeoOption, data: GoogleGeoData) => ({
     ...option,
