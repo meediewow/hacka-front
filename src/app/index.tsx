@@ -11,6 +11,7 @@ import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
 import { RegisterSitter } from '@/pages/register-sitter/register-sitter';
 import { RegisterClient } from '@/pages/register-client/register-client';
 import { ProfilePage } from '@/pages/profile/profile';
+import { Order } from '@/pages/order/order';
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,17 @@ const router = createBrowserRouter([
             <AuthGuard>
                 <DefaultLayout>
                     <Booking />
+                </DefaultLayout>
+            </AuthGuard>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/order/:orderId',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <Order />
                 </DefaultLayout>
             </AuthGuard>
         ),

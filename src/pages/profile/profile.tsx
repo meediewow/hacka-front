@@ -14,7 +14,7 @@ export const ProfilePage: React.FC = () => {
     }
 
     return (
-        <Stack width="100%" p={2} justifyContent="center" gap={0.5}>
+        <Stack width="100%" p={1} justifyContent="center" gap={0.5}>
             <UserProfile user={user} />
 
             {user.isSitter && <TariffEditedBox initialTariffs={user.tariff ?? []} />}
