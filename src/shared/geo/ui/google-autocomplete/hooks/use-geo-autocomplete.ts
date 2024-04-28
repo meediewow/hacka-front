@@ -56,6 +56,7 @@ export const useDataLoader = () => {
                     request: { input: string },
                     callback: (results?: readonly PlaceType[]) => void
                 ) => {
+
                     setLoading(true);
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     (autocompleteService.current as any).getPlacePredictions(
@@ -87,9 +88,12 @@ export const useGeoAutocomplete = (props: UseGeoAutocompleteProps) => {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if (!autocompleteService.current && (window as any).google) {
-            autocompleteService.current =
-                new // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                (window as any).google.maps.places.AutocompleteService();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const AutocompleteService: any = (window as any)?.google?.maps?.places?.AutocompleteService;
+
+            if (AutocompleteService) {
+                autocompleteService.current = new AutocompleteService();
+            }
         }
 
         if (!autocompleteService.current) {
