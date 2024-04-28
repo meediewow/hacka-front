@@ -9,15 +9,12 @@ export const SitterBooking: React.FC<SitterBookingProps> = ({ sitterId }) => {
     const navigate = useNavigate();
 
     const onSubmit = (data: SitterBookingFormData) => {
-        console.log('data', data);
-
-        const start = data.date?.[0]?.toISO();
-        const end = data.date?.[1]?.toISO();
-
-        navigate({
-            pathname: `/booking/${sitterId}`,
-            search: `?start=${start}&end=${end}`,
+        const searchParams = new URLSearchParams({
+            start: data.date?.[0]?.toISO() ?? '',
+            end: data.date?.[1]?.toISO() ?? '',
         });
+
+        navigate(`/booking/${sitterId}?${searchParams.toString()}`);
     };
 
     return (
