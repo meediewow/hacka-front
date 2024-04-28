@@ -15,7 +15,7 @@ export const PetForm: React.FC<PetFormProps> = ({ fields }) => {
 
             <TextField field={fields.age} />
 
-            <TextField field={fields.comment} multiline />
+            <TextField field={fields.comment} multiline minRows={3} />
         </Stack>
     );
 };

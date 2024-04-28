@@ -7,6 +7,7 @@ export interface RegisterFormData {
     password?: string;
     name?: string;
     phone?: string;
+    about?: string;
 
     pets?: PetFormData[];
     tariffs?: TariffFormData[];

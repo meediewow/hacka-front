@@ -29,6 +29,8 @@ export const useRegisterMutation = () => {
                         comment: pet.comment,
                     })),
 
+                    about: data.about,
+
                     profile: {
                         name: data.name,
                         // address: {

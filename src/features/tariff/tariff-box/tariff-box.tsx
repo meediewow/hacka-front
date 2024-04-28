@@ -40,11 +40,11 @@ export const TariffBox = ({ value, onAdd }: TariffBoxProps) => {
                 {onAdd && (
                     <Button
                         onClick={() => onAddTariff()}
-                        sx={{
-                            width: 290,
-                        }}
                         size="small"
                         variant="contained"
+                        sx={{
+                            mt: 0.5,
+                        }}
                     >
                         Добавить тариф
                     </Button>

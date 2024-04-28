@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { enqueueSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-form';
-import Stack from '@mui/material/Stack';
 import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
-import Typography from '@mui/material/Typography';
 import { AuthContext } from '@/features/auth';
+import Box from '@mui/material/Box';
+import { ContentCard } from '@/shared/ui/content-card';
 
 export const RegisterClient: React.FC = () => {
     const navigate = useNavigate();
@@ -28,12 +28,10 @@ export const RegisterClient: React.FC = () => {
     };
 
     return (
-        <Stack width="100%" p={2} justifyContent="center">
-            <Typography variant="h5" mb={1.5}>
-                Зарегистрироваться
-            </Typography>
-
-            <RegisterForm authLevel="client" onSubmit={onSubmit} />
-        </Stack>
+        <Box sx={{ mt: 1.5 }}>
+            <ContentCard title="Зарегистрироваться">
+                <RegisterForm authLevel="client" onSubmit={onSubmit} />
+            </ContentCard>
+        </Box>
     );
 };

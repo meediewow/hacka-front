@@ -19,7 +19,16 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, authLevel 
                 <TextField field={fields.name} required />
                 <TextField field={fields.phone} required />
 
-                {authLevel === 'client' && <PetsField field={fields.pets} />}
+                <TextField field={fields.about} required multiline minRows={3} />
+
+                {authLevel === 'client' && (
+                    <PetsField
+                        sx={{
+                            backgroundColor: (theme) => theme.palette.grey[100],
+                        }}
+                        field={fields.pets}
+                    />
+                )}
 
                 {authLevel === 'sitter' && <TariffsField field={fields.tariffs} />}
 

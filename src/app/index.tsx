@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AuthLayout } from '@/widgets/layouts/auth-layout';
 import { DefaultLayout } from '@/widgets/layouts/default-layout';
 import { Home } from '@/pages/home';
 import { Sitter } from '@/pages/sitter';
@@ -34,9 +33,9 @@ const router = createBrowserRouter([
     {
         path: '/login',
         element: (
-            <AuthLayout>
+            <DefaultLayout>
                 <Login />
-            </AuthLayout>
+            </DefaultLayout>
         ),
         errorElement: <Error />,
     },

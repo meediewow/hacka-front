@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import { enqueueSnackbar } from 'notistack';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginForm, LoginFormData } from '@/entities/auth/forms/login-form';
 import { useLoginMutation } from '@/entities/user/api/user-login.mutation';
 import { AuthContext } from '@/features/auth';
 import Typography from '@mui/material/Typography';
+import { ContentCard } from '@/shared/ui/content-card';
 
 export const Login: React.FC = () => {
     const navigate = useNavigate();
@@ -32,12 +33,14 @@ export const Login: React.FC = () => {
     };
 
     return (
-        <Box width={500} p={2}>
-            <Typography variant="h5" mb={1.5}>
-                Petcyfy - Вход
-            </Typography>
+        <Box sx={{ mt: 1.5 }}>
+            <ContentCard title="Petcyfy - Вход">
+                <LoginForm onSubmit={onSubmit} />
 
-            <LoginForm onSubmit={onSubmit} />
+                <Typography variant="body2" mt={2}>
+                    Нет аккаунта? <Link to="/register-client">Зарегистрируйтесь</Link>
+                </Typography>
+            </ContentCard>
         </Box>
     );
 };

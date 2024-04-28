@@ -7,6 +7,7 @@ import { PetFormData } from '@/entities/pet/forms/pet-form';
 
 export const PetsField = <T extends FieldValues>({
     field: { name },
+    sx,
 }: PetsFieldProps<T>) => {
     const {
         field: { value, onChange },
@@ -22,6 +23,7 @@ export const PetsField = <T extends FieldValues>({
             onAdd={(pet) => {
                 onChange([...pets, pet]);
             }}
+            sx={sx}
         />
     );
 };

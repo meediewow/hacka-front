@@ -14,6 +14,8 @@ export interface TextFieldProps<T extends FieldValues>
             | 'inputProps'
             | 'InputProps'
             | 'InputLabelProps'
+            | 'minRows'
+            | 'maxRows'
         > {
     min?: string;
     max?: string;

@@ -26,6 +26,10 @@ export const getFields = () => (): Fields<RegisterFormData> => ({
         label: 'Контактный телефон',
         validate: () => stringSchema().default(''),
     },
+    about: {
+        label: 'О себе',
+        validate: () => stringSchema().default(''),
+    },
 
     pets: {
         label: 'Питомцы',

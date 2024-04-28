@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import { useUser } from '@/features/auth';
 import { UserProfile } from '@/features/user/user-profile';
 import { TariffEditedBox } from '@/features/tariff/tariff-edited-box/tariff-edited-box';
+import { PetEditedBox } from '@/features/pet/pet-edited-box/pet-edited-box';
 
 export const ProfilePage: React.FC = () => {
     const user = useUser();
@@ -16,6 +17,8 @@ export const ProfilePage: React.FC = () => {
             <UserProfile user={user} />
 
             {user.isSitter && <TariffEditedBox initialTariffs={user.tariff ?? []} />}
+
+            {<PetEditedBox initialPets={user.pets ?? []} />}
         </Stack>
     );
 };
