@@ -1,3 +1,5 @@
+import type { UserReview } from '@/entities/user/types';
+
 export interface UserReviewCardProps {
-    review: { _id: string };
+    review: UserReview;
 }

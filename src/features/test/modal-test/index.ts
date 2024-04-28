@@ -1,1 +1,1 @@
-export { ModalTest } from './modal-test.tsx';
+export { ModalTest } from './modal-test';

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useModal } from '@/shared/lib/modal';
 import { PanelBase } from '@/shared/lib/modal/panels/panel-base';
-import type { ModalState } from '@/shared/lib/modal/types.ts';
+import type { ModalState } from '@/shared/lib/modal/types';
 
 interface ModalComponentProps {
     state: ModalState;

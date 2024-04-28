@@ -43,3 +43,16 @@ export type UserApiModel = {
 };
 
 export type AuthLevel = 'client' | 'sitter';
+
+export interface UserReview {
+    targetId: string;
+    name: string;
+    photo: string;
+    text: string;
+    date: string;
+    rate: number;
+}
+
+export interface UserReviewsVariables {
+    targetId?: string;
+}

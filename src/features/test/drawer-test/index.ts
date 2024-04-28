@@ -1,1 +1,1 @@
-export { DrawerTest } from './drawer-test.tsx';
+export { DrawerTest } from './drawer-test';

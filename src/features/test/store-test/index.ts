@@ -1,1 +1,1 @@
-export { StoreTest } from './store-test.tsx';
+export { StoreTest } from './store-test';

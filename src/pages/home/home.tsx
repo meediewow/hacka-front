@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
         <Box p={0.5}>
             <Stack spacing={0.5}>
                 <SitterFilter onSubmit={onSubmit} />
-                <SitterList items={mutation.data?.data?.list ?? []} />
+                <SitterList items={mutation.data?.list ?? []} />
             </Stack>
         </Box>
     );

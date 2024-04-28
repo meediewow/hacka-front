@@ -1,1 +1,1 @@
-export { SnackbarTest } from './snackbar-test.tsx';
+export { SnackbarTest } from './snackbar-test';

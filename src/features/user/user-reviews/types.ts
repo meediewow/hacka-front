@@ -1,1 +1,3 @@
-export interface UserReviewsProps {}
+export interface UserReviewsProps {
+    targetId?: string;
+}

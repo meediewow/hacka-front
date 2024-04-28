@@ -33,7 +33,7 @@ export const Sitter: React.FC = () => {
 
                 <SitterAboutMe user={data} />
 
-                <UserReviews />
+                <UserReviews targetId={sitterId} />
 
                 <SitterBooking />
             </Stack>
