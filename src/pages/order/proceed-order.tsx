@@ -19,7 +19,7 @@ export const ProceedOrder: React.FC = () => {
             try {
                 await mutateAsync({
                     orderId: orderId as string,
-                    status: OrderStatus.Confirmed,
+                    status: OrderStatus.Progress,
                 });
 
                 navigate('/profile');
