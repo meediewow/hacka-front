@@ -5,12 +5,20 @@ import { RegisterForm, RegisterFormData } from '@/entities/user/forms/register-f
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useRegisterMutation } from '@/entities/user/api/user-register.mutation';
-import { AuthContext } from '@/features/auth';
+import { useUserUpdateMutation } from '@/entities/user/api/user-update.mutation';
+import { AuthContext, useUser } from '@/features/auth';
+import { MakeSitterForm, MakeSitterFormData } from '@/entities/user/forms/make-sitter';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const RegisterSitter: React.FC = () => {
+    const user = useUser();
+
     const navigate = useNavigate();
 
+    const query = useQueryClient();
+
     const mutation = useRegisterMutation();
+    const updateMutation = useUserUpdateMutation();
 
     const { setToken } = useContext(AuthContext);
 
@@ -27,13 +35,45 @@ export const RegisterSitter: React.FC = () => {
         }
     };
 
+    const onMakeSitterSubmit = async (data: MakeSitterFormData) => {
+        try {
+            const { _id } = await updateMutation.mutateAsync({
+                role: 2,
+                profile: {
+                    tariff:
+                        data?.tariffs?.map((tariff) => ({
+                            category: tariff.category.id,
+                            pricePerDay: tariff.pricePerDay ?? 0,
+                        })) ?? [],
+                },
+            });
+
+            if (_id) {
+                await query.invalidateQueries({ queryKey: ['currentUser'] });
+
+                enqueueSnackbar(
+                    'Вы успешно стали ситтером! Ожидайте поступления заказов!',
+                    { variant: 'success' }
+                );
+            }
+
+            navigate('/profile');
+        } catch (error) {
+            enqueueSnackbar((error as { message: string }).message, { variant: 'error' });
+        }
+    };
+
     return (
         <Stack width="100%" p={2} justifyContent="center">
             <Typography variant="h5" mb={1.5}>
                 Стать ситтером
             </Typography>
 
-            <RegisterForm authLevel="sitter" onSubmit={onSubmit} />
+            {user ? (
+                <MakeSitterForm onSubmit={onMakeSitterSubmit} />
+            ) : (
+                <RegisterForm authLevel="sitter" onSubmit={onSubmit} />
+            )}
         </Stack>
     );
 };
