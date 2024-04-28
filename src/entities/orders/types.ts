@@ -13,3 +13,16 @@ export type OrderAM = {
     price?: number;
     createdAt?: string;
 };
+
+export interface CreateOrderData {
+    _id: string;
+}
+
+export interface CreateOrderVariables {
+    sitterId?: string;
+    period?: {
+        start: string;
+        end: string;
+    };
+    petIds: string[];
+}
