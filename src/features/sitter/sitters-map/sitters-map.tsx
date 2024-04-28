@@ -1,19 +1,21 @@
 import React from 'react';
 
+import { useUserPosition } from '@/shared/geo';
 import { UserApiModel } from '@/entities/user/types.ts';
-import { GoogleMap, MarkerData } from '@/shared/geo/ui/google-map';
+import { GoogleMap, MarkerData, GoogleMapProps } from '@/shared/geo/ui/google-map';
 
 export interface SittersMapProps {
     loading: boolean;
     sitters: UserApiModel[];
+    center: GoogleMapProps<never>['center'];
     onSelectSitter: (data: UserApiModel) => void;
 }
 
 type UserMarker = MarkerData<UserApiModel>;
 
-const center = { lat: 40.7128, lng: -74.0060 };
+const defaultCenter = { lat: 40.7128, lng: -74.0060 };
 
-export const SittersMap = ({ onSelectSitter, sitters }: SittersMapProps) => {
+export const SittersMapContent = ({ onSelectSitter, sitters, center }: SittersMapProps) => {
     const markers = React.useMemo(() => {
         return sitters.reduce<UserMarker[]>((result, user) => {
             if (!user.coordinates) {
@@ -42,4 +44,16 @@ export const SittersMap = ({ onSelectSitter, sitters }: SittersMapProps) => {
             onMarkerClick={onSelectSitter}
         />
     );
+}
+
+export const SittersMap = (props: SittersMapProps) => {
+    const { isRequest, position } = useUserPosition();
+
+    const center = React.useMemo(() => {
+        return position ? position : defaultCenter;
+    }, [position]);
+
+    return isRequest ? null : (
+        <SittersMapContent {...props} center={center} />
+    )
 }
