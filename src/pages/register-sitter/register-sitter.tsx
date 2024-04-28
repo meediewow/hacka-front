@@ -45,7 +45,13 @@ export const RegisterSitter: React.FC = () => {
                             category: tariff.category.id,
                             pricePerDay: tariff.pricePerDay ?? 0,
                         })) ?? [],
+                    address: {
+                        city: data.address?.name ?? '',
+                    },
                 },
+                coordinates: data.address
+                    ? [data.address.lng, data.address.lat]
+                    : undefined,
             });
 
             if (_id) {

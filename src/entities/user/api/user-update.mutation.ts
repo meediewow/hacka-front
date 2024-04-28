@@ -7,7 +7,7 @@ export type UserUpdateMutationVariables = {
         name?: string;
         photo?: string;
         address?: {
-            country: string;
+            country?: string;
             city: string;
         };
         ordersCount?: number;

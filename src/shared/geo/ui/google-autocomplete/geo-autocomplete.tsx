@@ -17,7 +17,12 @@ export type UseGeoAutocompletePropsProps = UseGeoAutocompleteProps &
     Pick<
         AutocompleteProps<AutocompleteGeoOption, never, never, never>,
         'sx' | 'fullWidth'
-    > & { label?: React.ReactNode; error?: boolean; helperText?: React.ReactNode };
+    > & {
+        label?: React.ReactNode;
+        error?: boolean;
+        helperText?: React.ReactNode;
+        required?: boolean;
+    };
 
 export const GeoAutocomplete = ({
     value,
@@ -25,6 +30,7 @@ export const GeoAutocomplete = ({
     label,
     error,
     helperText,
+    required,
     ...autocompleteProps
 }: UseGeoAutocompletePropsProps) => {
     const { options, loading, onChange, setInputValue } = useGeoAutocomplete({
@@ -60,6 +66,7 @@ export const GeoAutocomplete = ({
                     {...params}
                     label={label}
                     fullWidth
+                    required={required}
                     error={error}
                     helperText={helperText}
                 />

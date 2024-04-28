@@ -1,9 +1,9 @@
-import { TariffFormData } from '@/entities/tariff/forms/tariff-form';
+import type { TariffFormData } from '@/entities/tariff/forms/tariff-form';
+import type { AutocompleteGeoOption } from '@/shared/geo';
 
 export interface MakeSitterFormData {
     about?: string;
-    address?: string;
-
+    address?: AutocompleteGeoOption | null;
     tariffs?: TariffFormData[];
 }
 
