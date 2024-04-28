@@ -13,11 +13,8 @@ export const useGetOrdersQuery = (type: AuthLevel) => {
     return useQuery({
         queryKey: [type === 'sitter' ? 'sitter-orders' : 'client-orders'],
         queryFn: async () => {
-            return (
-                await api.get(
-                    type === 'sitter' ? '/sitter-order/orders' : '/client-order/orders'
-                )
-            ).data as GetOrdersQueryData;
+            return (await api.get(type === 'sitter' ? '/sitter-order' : '/client-order'))
+                .data as GetOrdersQueryData;
         },
     });
 };

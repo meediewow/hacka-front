@@ -15,7 +15,7 @@ export const ClientOrder: React.FC = () => {
     const { data, isLoading } = useGetOrderQuery('client', orderId);
 
     const user = React.useMemo(
-        () => (data?.client ? mapUserApiModelToUser(data?.client) : null),
+        () => (data?.sitter ? mapUserApiModelToUser(data?.sitter) : null),
         [data]
     );
 
@@ -32,7 +32,7 @@ export const ClientOrder: React.FC = () => {
             <Stack spacing={0.5}>
                 <UserProfile user={user} />
 
-                <Typography variant="h6">Заказ на передержку</Typography>
+                <Typography variant="h6">Ваш заказ</Typography>
             </Stack>
         </Box>
     );

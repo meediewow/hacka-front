@@ -7,7 +7,7 @@ import type { SitterListProps } from './types';
 
 export const SitterList: React.FC<SitterListProps> = ({ items }) => {
     return (
-        <ContentCard title="Список ситтеор">
+        <ContentCard title="Список ситтеров">
             <Stack spacing={1} divider={<Divider />}>
                 {items.map((sitter, index) => (
                     <SitterCard key={index} sitter={sitter} />

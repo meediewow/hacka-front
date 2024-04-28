@@ -32,7 +32,7 @@ export const SitterOrder: React.FC = () => {
             <Stack spacing={0.5}>
                 <UserProfile user={user} />
 
-                <Typography variant="h6">Ваш заказ</Typography>
+                <Typography variant="h6">Заказ на передержку</Typography>
             </Stack>
         </Box>
     );

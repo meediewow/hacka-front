@@ -44,10 +44,15 @@ export const SitterCard: React.FC<SitterCardProps> = ({ sitter }) => {
                     )}
                 </Box>
                 <Box display="flex" gap={0.75} alignItems="center">
-                    <ViewRating rating={sitter.rating} />
-                    <Accessory />
+                    {Boolean(sitter.rating) && (
+                        <>
+                            <ViewRating rating={sitter.rating} />
+                            <Accessory />
+                        </>
+                    )}
+
                     <Typography color="success.main">
-                        {sitter.countOrders} заказов
+                        Заказов: {sitter.countOrders}
                     </Typography>
                 </Box>
             </Stack>
