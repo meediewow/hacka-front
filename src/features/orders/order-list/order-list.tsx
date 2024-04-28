@@ -1,4 +1,4 @@
-import { useGetOrdersQuery } from '@/entities/orders/api/get-order.order';
+import { useGetOrdersQuery } from '@/entities/orders/api/get-orders.order';
 import { AuthLevel } from '@/entities/user/types';
 import { ContentCard } from '@/shared/ui/content-card';
 import CircularProgress from '@mui/material/CircularProgress';

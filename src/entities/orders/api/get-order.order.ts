@@ -3,22 +3,22 @@ import { useQuery } from '@tanstack/react-query';
 import { OrderAM } from '../types';
 import { AuthLevel } from '@/entities/user/types';
 
-export type GetOrdersQueryVariables = {
-    //
+export type GetOrderQueryVariables = {
+    id: string;
 };
 
-export type GetOrdersQueryData = OrderAM[];
+export type GetOrderQueryData = OrderAM;
 
-export const useGetOrdersQuery = (type: AuthLevel) => {
+export const useGetOrderQuery = (type: AuthLevel, id?: string) => {
     return useQuery({
-        queryKey: [type === 'sitter' ? 'sitter-orders' : 'client-orders'],
-        queryFn: async (variables: GetOrdersQueryVariables) => {
+        queryKey: [type === 'sitter' ? 'sitter-order' : 'client-order', id],
+        queryFn: async () => {
             return (
                 await api.get(
-                    type === 'sitter' ? '/sitter-orders' : '/client-orders',
-                    variables
+                    type === 'sitter' ? `/sitter-order/${id}` : `/client-order/${id}`
                 )
-            ).data as GetOrdersQueryData;
+            ).data as GetOrderQueryData;
         },
+        enabled: Boolean(id),
     });
 };

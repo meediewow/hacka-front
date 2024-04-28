@@ -11,7 +11,8 @@ import { AuthGuard } from '@/features/auth/auth-guard/auth-guard';
 import { RegisterSitter } from '@/pages/register-sitter/register-sitter';
 import { RegisterClient } from '@/pages/register-client/register-client';
 import { ProfilePage } from '@/pages/profile/profile';
-import { Order } from '@/pages/order/order';
+import { ClientOrder } from '@/pages/order/client-order';
+import { SitterOrder } from '@/pages/order/sitter-order';
 
 const router = createBrowserRouter([
     {
@@ -82,11 +83,22 @@ const router = createBrowserRouter([
         errorElement: <Error />,
     },
     {
-        path: '/order/:orderId',
+        path: '/order/client/:orderId',
         element: (
             <AuthGuard>
                 <DefaultLayout>
-                    <Order />
+                    <ClientOrder />
+                </DefaultLayout>
+            </AuthGuard>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/order/sitter/:orderId',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <SitterOrder />
                 </DefaultLayout>
             </AuthGuard>
         ),
