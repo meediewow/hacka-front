@@ -14,6 +14,8 @@ import { ProfilePage } from '@/pages/profile/profile';
 import { ClientOrder } from '@/pages/order/client-order';
 import { SitterOrder } from '@/pages/order/sitter-order';
 import { SittersOnMapPage } from '@/pages/sitters-on-map';
+import { ProceedOrder } from '@/pages/order/proceed-order';
+import { CompleteOrder } from '@/pages/order/complete-order';
 
 const router = createBrowserRouter([
     {
@@ -106,6 +108,28 @@ const router = createBrowserRouter([
         errorElement: <Error />,
     },
     {
+        path: '/order/proceed/:orderId',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <ProceedOrder />
+                </DefaultLayout>
+            </AuthGuard>
+        ),
+        errorElement: <Error />,
+    },
+    {
+        path: '/order/complete/:orderId',
+        element: (
+            <AuthGuard>
+                <DefaultLayout>
+                    <CompleteOrder />
+                </DefaultLayout>
+            </AuthGuard>
+        ),
+        errorElement: <Error />,
+    },
+    {
         path: '/map',
         element: (
             <DefaultLayout>
@@ -113,7 +137,7 @@ const router = createBrowserRouter([
             </DefaultLayout>
         ),
         errorElement: <Error />,
-    }
+    },
 ]);
 
 export const App: React.FC = withProviders(() => <RouterProvider router={router} />);

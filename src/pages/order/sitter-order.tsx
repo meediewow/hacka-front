@@ -25,9 +25,17 @@ import { useChangeStatusMutation } from '@/entities/orders/api/change-status.mut
 import { enqueueSnackbar } from 'notistack';
 import { useQueryClient } from '@tanstack/react-query';
 
+import QRCode from 'qrcode';
+
+const getCode = async (url: string) => {
+    return await QRCode.toDataURL(url);
+};
+
 export const SitterOrder: React.FC = () => {
     const { orderId } = useParams();
     const client = useQueryClient();
+
+    const [codeUrl, setCodeUrl] = React.useState<string>('');
 
     const { data: order, isLoading } = useGetOrderQuery('sitter', orderId);
 
@@ -36,7 +44,29 @@ export const SitterOrder: React.FC = () => {
         [order]
     );
 
+    const status = order?.status as OrderStatus;
+
     const { mutateAsync, isPending } = useChangeStatusMutation();
+
+    React.useEffect(() => {
+        if (orderId) {
+            let url = '';
+
+            if (status === OrderStatus.Confirmed) {
+                url = `https://hacka-front-f42e31383e86.herokuapp.com/order/proceed/${orderId}`;
+            } else if (status === OrderStatus.Progress) {
+                url = `https://hacka-front-f42e31383e86.herokuapp.com/order/complete/${orderId}`;
+            }
+
+            if (url) {
+                getCode(
+                    `https://hacka-front-f42e31383e86.herokuapp.com/order/proceed/${orderId}`
+                ).then((url) => {
+                    setCodeUrl(url);
+                });
+            }
+        }
+    }, [orderId, status]);
 
     const updateStatus = React.useCallback(
         async (newStatus: OrderStatus) => {
@@ -63,8 +93,6 @@ export const SitterOrder: React.FC = () => {
     if (!order || !user) {
         return null;
     }
-
-    const status = order.status as OrderStatus;
 
     return (
         <Box p={1}>
@@ -127,6 +155,17 @@ export const SitterOrder: React.FC = () => {
                                     Отменить
                                 </Button>
                             </>
+                        )}
+
+                        {codeUrl && (
+                            <Box>
+                                <Typography variant="caption">
+                                    QR-код для заказа, покажите его клиенту, после
+                                    сканирования статус заказа будет изменен автоматически
+                                </Typography>
+
+                                <img src={codeUrl} alt="QR" />
+                            </Box>
                         )}
                     </Stack>
                 </ContentCard>
